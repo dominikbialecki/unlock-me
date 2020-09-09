@@ -5,12 +5,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {EgyptComponent} from './egypt/egypt.component';
 import {DeadlyWavesComponent} from './deadly-waves/deadly-waves.component';
+import {EgyptToggleButtonComponent} from './egypt/egypt-toggle-button/egypt-toggle-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EgyptComponent,
-    DeadlyWavesComponent
+    DeadlyWavesComponent,
+    EgyptToggleButtonComponent
   ],
   imports: [
     BrowserModule,
