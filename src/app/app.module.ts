@@ -7,6 +7,8 @@ import {EgyptComponent} from './egypt/egypt.component';
 import {DeadlyWavesComponent} from './deadly-waves/deadly-waves.component';
 import {EgyptToggleButtonComponent} from './egypt/egypt-toggle-button/egypt-toggle-button.component';
 import {PuzzleSolvedDirective} from './puzzle-solved.directive';
+import {ArtifactComponent} from './artifact/artifact.component';
+import {ClockComponent} from './clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {PuzzleSolvedDirective} from './puzzle-solved.directive';
     EgyptComponent,
     DeadlyWavesComponent,
     EgyptToggleButtonComponent,
-    PuzzleSolvedDirective
+    PuzzleSolvedDirective,
+    ArtifactComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,
