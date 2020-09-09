@@ -9,6 +9,8 @@ import {EgyptToggleButtonComponent} from './egypt/egypt-toggle-button/egypt-togg
 import {PuzzleSolvedDirective} from './puzzle-solved.directive';
 import {ArtifactComponent} from './artifact/artifact.component';
 import {ClockComponent} from './clock/clock.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {ClockComponent} from './clock/clock.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [],
   bootstrap: [AppComponent]
