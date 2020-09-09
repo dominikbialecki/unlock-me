@@ -10,7 +10,6 @@ import {puzzles} from './puzzles';
   selector: 'um-root',
   styleUrls: ['./app.component.scss'],
   template: `
-    <div>app component works!</div>
     <router-outlet></router-outlet>
   `,
 })

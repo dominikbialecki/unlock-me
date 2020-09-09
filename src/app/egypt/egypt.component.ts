@@ -1,39 +1,40 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {PuzzleSchedulerService} from '../puzzle-scheduler.service';
 
 @Component({
   selector: 'um-egypt',
   template: `
-    <p>
+    <div class="description">
       Odpowiedzi szukaj w egipcie
-    </p>
-    <div class="row" *ngFor="let row of (toggles$ | async); index as rowIdx">
-      <um-egypt-toggle-button *ngFor="let toggle of row; index as colIdx"
+    </div>
+    <div class="row" *ngFor="let row of (toggles$ | async); index as rowIdx; trackBy: trackByIndex">
+      <um-egypt-toggle-button *ngFor="let toggle of row; index as colIdx; trackBy: trackByIndex"
                               [value]="toggle"
                               (click)="onToggleClick(rowIdx, colIdx)"
       ></um-egypt-toggle-button>
     </div>
-    <button *ngIf="valid$ | async" (click)="scheduler.onPuzzleSolved()">GO</button>
+    <img *ngIf="valid$ | async" class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png"/>
   `,
   styleUrls: ['./egypt.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EgyptComponent {
 
-  private static readonly ROW_SIZE = 4;
+  private static readonly ROW_SIZE = 11;
 
   private readonly code: number[][] = [
     [1, 2],
-    [2, 3]
+    [2, 3],
+    [2, 3],
+    [2, 3],
+    [2, 3],
+    [2, 3],
   ];
   private readonly validToggles = this.codeToToggles(this.code);
   readonly toggles$: BehaviorSubject<boolean[][]> = new BehaviorSubject(this.initToggles());
   readonly valid$ = this.toggles$.pipe(map(toggles => this.togglesMatchesCode(toggles)));
-
-  constructor(public scheduler: PuzzleSchedulerService) {
-  }
+  readonly trackByIndex = index => index;
 
   private togglesMatchesCode(toggles: boolean[][]): boolean {
     return this.validToggles.every((row, rowIdx) => {
