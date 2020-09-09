@@ -14,7 +14,8 @@ import {map} from 'rxjs/operators';
                               (click)="onToggleClick(rowIdx, colIdx)"
       ></um-egypt-toggle-button>
     </div>
-    <img *ngIf="valid$ | async" class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png"/>
+    <!--    <img *ngIf="valid$ | async" class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png" alt="success"/>-->
+    <img class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png" alt="success"/>
   `,
   styleUrls: ['./egypt.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

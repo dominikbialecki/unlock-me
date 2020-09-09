@@ -1,3 +1,48 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url('src/assets/egypt/egypt-backgound.jpg') center;
+  background-size: cover;
+
+
+  .artifact-wrapper {
+    border-radius: 50%;
+    padding: 25px;
+  }
+
+  .artifact-wrapper:not(.success) {
+    animation: neon 1.5s ease-in-out infinite alternate;
+  }
+
+  .artifact-wrapper.success {
+    animation: neon-success 1.5s ease-in-out infinite alternate;
+  }
+
+  .artifact {
+    width: 300px;
+    height: 300px;
+  }
+
+}
+
+
+@keyframes neon {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff3400, 0 0 70px #ff3400, 0 0 80px #ff3400, 0 0 100px #ff3400, 0 0 150px #ff3400;
+  }
+  to {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff3400, 0 0 35px #ff3400, 0 0 40px #ff3400, 0 0 50px #ff3400, 0 0 75px #ff3400;
+  }
+}
+
+@keyframes neon-success {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00ff1f, 0 0 70px #00ff1f, 0 0 80px #00ff1f, 0 0 100px #00ff1f, 0 0 150px #00ff1f;
+  }
+  to {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00ff1f, 0 0 35px #00ff1f, 0 0 40px #00ff1f, 0 0 50px #00ff1f, 0 0 75px #00ff1f;
+  }
 }

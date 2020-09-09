@@ -4,8 +4,8 @@ import {ArtifactComponent} from './artifact/artifact.component';
 import {ClockComponent} from './clock/clock.component';
 
 export const puzzles = [
+  ArtifactComponent,
   EgyptComponent,
   DeadlyWavesComponent,
-  ArtifactComponent,
   ClockComponent,
 ];
