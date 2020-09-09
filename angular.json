@@ -10,8 +10,11 @@
           "style": "scss",
           "displayBlock": true,
           "skipTests": true,
-          "inlineTemplate": false,
+          "inlineTemplate": true,
           "changeDetection": "OnPush"
+        },
+        "@schematics/angular:service": {
+          "skipTests": false
         }
       },
       "root": "",
