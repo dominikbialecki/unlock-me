@@ -15,7 +15,7 @@ import {HomeComponent} from './home/home.component';
 import {RelaxComponent} from './relax/relax.component';
 import {HackerComponent} from './hacker/hacker.component';
 import {WeddingComponent} from './wedding/wedding.component';
-import {DescriptionComponent} from './description/description.component';
+import {CardComponent} from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import {DescriptionComponent} from './description/description.component';
     RelaxComponent,
     HackerComponent,
     WeddingComponent,
-    DescriptionComponent
+    CardComponent
   ],
   imports: [
     BrowserModule,

@@ -6,9 +6,9 @@ import {Observable, timer} from 'rxjs';
 })
 export class VibrationTransmitterService {
 
-  private static readonly VIBRATION_DURATION = 300;
-  private static readonly VIBRATION_PAUSE_DURATION = 200;
-  private static readonly NUMBER_PAUSE_DURATION = 1000;
+  private static readonly VIBRATION_DURATION = 100;
+  private static readonly VIBRATION_PAUSE_DURATION = 50;
+  private static readonly NUMBER_PAUSE_DURATION = 300;
 
   transmit(pattern: number[]): Observable<unknown> {
     const code = this.vibrations(pattern);

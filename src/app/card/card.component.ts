@@ -1,13 +1,13 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 
 @Component({
-  selector: 'um-description',
+  selector: 'um-card',
   template: `
     <ng-content></ng-content>
   `,
-  styleUrls: ['./description.component.scss'],
+  styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DescriptionComponent {
+export class CardComponent {
   @Input() @HostBinding('class') color: 'light' | 'dark' | 'success' = 'light';
 }
