@@ -1,7 +1,14 @@
 :host {
   display: block;
-
   padding: 1rem;
   font-weight: 500;
+  white-space: pre-wrap;
+}
+
+:host.light {
+  background: #ffffffaa;
+}
+
+:host.success {
   background: #ffffffaa;
 }

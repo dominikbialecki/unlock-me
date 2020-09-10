@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 
 @Component({
   selector: 'um-description',
@@ -9,4 +9,5 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DescriptionComponent {
+  @Input() @HostBinding('class') color: 'light' | 'dark' | 'success' = 'light';
 }
