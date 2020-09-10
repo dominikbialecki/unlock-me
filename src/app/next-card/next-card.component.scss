@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+um-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button.next {
+  margin: 0.5rem 0;
+  text-align: center;
+  padding: 0.5rem 2.5rem;
+  text-transform: capitalize;
+  display: block;
+  background: #ffffffaa;
+  border: none;
+  appearance: none;
+  font-weight: 500;
+  white-space: pre-wrap;
+  outline: none;
+
+  &:active {
+    background: #eeeeeeaa;
+  }
+}

@@ -5,22 +5,20 @@ import {map} from 'rxjs/operators';
 @Component({
   selector: 'um-deadly-waves',
   template: `
-    <ng-container *ngIf="!(offline$ | async); else online">
-      <um-card class="card" umPuzzleSolved>
+    <ng-container *ngIf="(offline$ | async) === false; else online">
+      <um-next-card class="card">
         Niestety, jest już za późno. Udało Ci się zniszczyć maszt, ale czujesz wyraźnie dziurę, którą fale wypaliły w korze prawej półkuli
         mózgu. Czujesz się coraz słabiej...
         <br/>
         <br/>
         Zaraz zaraz. Czy to fatamorgana?
-        <um-card class="next">Dalej</um-card>
-      </um-card>
+      </um-next-card>
     </ng-container>
 
     <ng-template #online>
       <um-card class="card">
         Jest tylko jeden sposób żeby wygrać tę wojnę. Trzeba zniszczyć maszt!!!
       </um-card>
-
     </ng-template>
   `,
   styleUrls: ['./deadly-waves.component.scss'],

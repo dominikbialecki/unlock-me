@@ -16,6 +16,7 @@ import {RelaxComponent} from './relax/relax.component';
 import {HackerComponent} from './hacker/hacker.component';
 import {WeddingComponent} from './wedding/wedding.component';
 import {CardComponent} from './card/card.component';
+import {NextCardComponent} from './next-card/next-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {CardComponent} from './card/card.component';
     RelaxComponent,
     HackerComponent,
     WeddingComponent,
-    CardComponent
+    CardComponent,
+    NextCardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,34 @@
 :host {
   display: block;
+  background: url('src/assets/home/home-background.jpg') center;
+  background-size: cover;
+  background-position-x: 55%;
+  position: relative;
+
+  .sleeping {
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: url('src/assets/home/sleeping.png') center;
+    background-size: cover;
+  }
 }
 
 .form {
   display: flex;
-  justify-content: space-between;
+  width: unset;
+  margin: 70vh 2rem 0;
+  justify-content: center;
 
   input {
     width: 2rem;
     margin: 0.25rem;
   }
+}
+
+um-next-card {
+  margin: 30vh 2rem 0;
 }
