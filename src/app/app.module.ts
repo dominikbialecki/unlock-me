@@ -11,6 +11,11 @@ import {ArtifactComponent} from './artifact/artifact.component';
 import {ClockComponent} from './clock/clock.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
+import {HomeComponent} from './home/home.component';
+import {RelaxComponent} from './relax/relax.component';
+import {HackerComponent} from './hacker/hacker.component';
+import {WeddingComponent} from './wedding/wedding.component';
+import {DescriptionComponent} from './description/description.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,12 @@ import {environment} from '../environments/environment';
     EgyptToggleButtonComponent,
     PuzzleSolvedDirective,
     ArtifactComponent,
-    ClockComponent
+    ClockComponent,
+    HomeComponent,
+    RelaxComponent,
+    HackerComponent,
+    WeddingComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,

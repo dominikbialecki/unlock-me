@@ -12,7 +12,10 @@ import {map} from 'rxjs/operators';
     </ng-container>
 
     <ng-template #online>
-      Maszty są coraz silniejsze! Czuję, że czapka przestaje wystarczać... Muszę jak najszybciej zniszczyć źródło fal.
+      <um-description>
+        Jest tylko jeden sposób żeby wygrać tę wojnę. Trzeba zniszczyć maszt!!!
+      </um-description>
+
     </ng-template>
   `,
   styleUrls: ['./deadly-waves.component.scss'],
