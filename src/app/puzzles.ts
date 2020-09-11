@@ -7,24 +7,24 @@ import {RelaxComponent} from './relax/relax.component';
 import {HackerComponent} from './hacker/hacker.component';
 import {WeddingComponent} from './wedding/wedding.component';
 
+export const puzzles = [
+  HackerComponent,
+  HomeComponent,
+  RelaxComponent,
+  ArtifactComponent,
+  DeadlyWavesComponent,
+  EgyptComponent,
+  ClockComponent,
+  WeddingComponent,
+];
+
 // export const puzzles = [
-//   HomeComponent,
-//   RelaxComponent,
-//   ArtifactComponent,
 //   DeadlyWavesComponent,
 //   EgyptComponent,
+//   ArtifactComponent,
+//   HomeComponent,
+//   RelaxComponent,
 //   ClockComponent,
 //   HackerComponent,
 //   WeddingComponent,
 // ];
-
-export const puzzles = [
-  DeadlyWavesComponent,
-  EgyptComponent,
-  ArtifactComponent,
-  HomeComponent,
-  RelaxComponent,
-  ClockComponent,
-  HackerComponent,
-  WeddingComponent,
-];
