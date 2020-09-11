@@ -17,18 +17,8 @@
   }
 }
 
-.form {
-  display: flex;
-  width: unset;
-  margin: 70vh 2rem 0;
-  justify-content: center;
-
-  input {
-    width: 2rem;
-    margin: 0.25rem;
-  }
-}
-
-um-next-card {
+um-next-card, .form {
+  z-index: 2;
+  position: relative;
   margin: 30vh 2rem 0;
 }

@@ -1,23 +1,16 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {TransmitOnRelaxService} from './transmit-on-relax.service';
 
 @Component({
   selector: 'um-relax',
   template: `
-    <ng-container *ngIf="invalid$ | async; else valid">
+    <ng-container *ngIf="!valid; else validDialog">
       <div class="sleeping"></div>
-      <um-card class="form">
-        <input *ngFor="let c of code; index as i"
-               type="number"
-               min="0"
-               max="10"
-               (input)="onInput(c, i)"
-        >
-      </um-card>
+      <um-number-form class="form" [code]="code" (valid)="valid = true"></um-number-form>
     </ng-container>
-    <ng-template #valid>
+    <ng-template #validDialog>
       <um-next-card>
         *zieeeew* która to godzina? Chyba mi się przysnęło.
         Hmmmm odtwórzmy przebieg zdarzeń. Muszę tylko znaleźć zegar.
@@ -29,15 +22,11 @@ import {TransmitOnRelaxService} from './transmit-on-relax.service';
 })
 export class RelaxComponent implements OnInit, OnDestroy {
 
+  valid = false;
   private destroy$ = new Subject<boolean>();
   readonly code = [4, 2, 6, 3, 1, 4];
-  private readonly value$ = new BehaviorSubject(this.code.map(() => 0));
-  readonly invalid$: Observable<boolean>;
 
   constructor(private transmit: TransmitOnRelaxService) {
-    this.invalid$ = this.value$.pipe(
-      map(value => this.code.some((num, idx) => value[idx] !== num))
-    );
   }
 
   ngOnInit() {
@@ -49,11 +38,5 @@ export class RelaxComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  onInput(value: number, index: number) {
-    const code = [...this.value$.getValue()];
-    code[index] = value;
-    this.value$.next(code);
   }
 }

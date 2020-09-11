@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.form {
+  display: flex;
+  width: unset;
+  justify-content: center;
+
+  input {
+    width: 2rem;
+    margin: 0.25rem;
+  }
+}

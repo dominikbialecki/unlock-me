@@ -17,6 +17,7 @@ import {HackerComponent} from './hacker/hacker.component';
 import {WeddingComponent} from './wedding/wedding.component';
 import {CardComponent} from './card/card.component';
 import {NextCardComponent} from './next-card/next-card.component';
+import {NumberFormComponent} from './number-form/number-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {NextCardComponent} from './next-card/next-card.component';
     HackerComponent,
     WeddingComponent,
     CardComponent,
-    NextCardComponent
+    NextCardComponent,
+    NumberFormComponent
   ],
   imports: [
     BrowserModule,

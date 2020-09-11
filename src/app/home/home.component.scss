@@ -5,3 +5,47 @@
   background-position-x: 55%;
   position: relative;
 }
+
+.dog {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+.corgi-1 {
+  bottom: 20%;
+  left: 5%;
+  background-image: url('src/assets/dogs/corgi.png');
+}
+
+.bulldog {
+  bottom: 25%;
+  left: 20%;
+  background-image: url('src/assets/dogs/bulldog.png');
+}
+
+.puppy {
+  bottom: 0;
+  left: 30%;
+  background-image: url('src/assets/dogs/puppy.png');
+}
+
+.spaniel {
+  bottom: 5%;
+  left: 65%;
+  background-image: url('src/assets/dogs/spaniel.png');
+}
+
+
+.corgi-2 {
+  top: 12%;
+  left: 50%;
+  background-image: url('src/assets/dogs/corgi.png');
+}
+
+um-next-card, .form {
+  margin: 30vh 2rem 0;
+}
