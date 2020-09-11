@@ -16,7 +16,7 @@ export class TransmitOnRelaxService {
   }
 
   transmit(code: number[]): Observable<unknown> {
-    const timer$ = timer(0, 5000);
+    const timer$ = timer(5000, 5000);
     const orientation$ = fromEvent(window, 'deviceorientation') as Observable<Orientation>;
 
     return orientation$.pipe(

@@ -5,7 +5,7 @@ import {map} from 'rxjs/operators';
 @Component({
   selector: 'um-deadly-waves',
   template: `
-    <ng-container *ngIf="(offline$ | async) === false; else online">
+    <ng-container *ngIf="offline$ | async; else online">
       <um-next-card class="card">
         Niestety, jest już za późno. Udało Ci się zniszczyć maszt, ale czujesz wyraźnie dziurę, którą fale wypaliły w korze prawej półkuli
         mózgu. Czujesz się coraz słabiej...

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {from, fromEvent, Observable} from 'rxjs';
-import {map, startWith, switchMap} from 'rxjs/operators';
+import {debounceTime, filter, map, startWith, switchMap} from 'rxjs/operators';
 import {EventTargetLike} from 'rxjs/internal-compatibility';
 
 type BatteryManager = EventTargetLike<unknown> & {
@@ -16,22 +16,27 @@ type BatteryManager = EventTargetLike<unknown> & {
     </div>
 
     <div>
-      <div class="artifact-wrapper"
-           [class.success]="charging$ | async"
-           umPuzzleSolved
-           [disabled]="(charging$ | async) === false">
+      <div class="artifact-wrapper" [class.charging]="charging$ | async" [class.charged]="charged$ | async">
         <img class="artifact"
              alt="artifact"
              src="/assets/egypt/egypt-success.png"/>
       </div>
     </div>
+
+    <um-next-card *ngIf="charged$ | async">
+      Udało się! Zaraza zostałą doszczętnie zniszczona.
+      Pora wrócić do domu i wrócić do normalnego życia. Kiedy tylko wrócę do domu muszę...
+    </um-next-card>
   `,
   styleUrls: ['./artifact.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtifactComponent implements OnInit {
 
+  private static readonly CHARGING_TIME = 10 * 1000;
+
   charging$: Observable<boolean>;
+  charged$: Observable<boolean>;
 
   constructor() {
   }
@@ -45,6 +50,12 @@ export class ArtifactComponent implements OnInit {
         startWith(battery.charging),
         )
       )
+    );
+    this.charged$ = this.charging$.pipe(
+      filter(Boolean),
+      debounceTime(ArtifactComponent.CHARGING_TIME),
+      map(() => true),
+      startWith(false),
     );
   }
 

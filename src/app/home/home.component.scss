@@ -19,6 +19,7 @@
   bottom: 20%;
   left: 5%;
   background-image: url('src/assets/dogs/corgi.png');
+  animation: run-y 20s ease-in-out;
 }
 
 .bulldog {
@@ -31,6 +32,7 @@
   bottom: 0;
   left: 30%;
   background-image: url('src/assets/dogs/puppy.png');
+  animation: run 10s ease-in-out infinite;
 }
 
 .spaniel {
@@ -48,4 +50,36 @@
 
 um-next-card, .form {
   margin: 30vh 2rem 0;
+}
+
+@keyframes run {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(10%);
+  }
+  50% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(-10%);
+  }
+}
+
+@keyframes run-y {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, 10%);
+  }
+  50% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(0, -10%);
+  }
 }

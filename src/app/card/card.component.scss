@@ -9,6 +9,12 @@
   background: #ffffffaa;
 }
 
+:host.dark {
+  font-weight: 400;
+  color: #eee;
+  background: #333333aa;
+}
+
 :host.success {
   background: #ffffffaa;
 }

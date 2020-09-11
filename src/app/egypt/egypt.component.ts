@@ -5,17 +5,17 @@ import {map} from 'rxjs/operators';
 @Component({
   selector: 'um-egypt',
   template: `
-    <div class="description">
-      Odpowiedzi szukaj w egipcie
-    </div>
+    <um-card class="description" color="dark">
+      Co to? Jestem w Egipcie?! Ale to dobrze... Słyszałem, ze to tu ukryta jest słynna statuetka Anamuptatisa. Według przepowiedni ma ona
+      moc zniszczyć od środka wszelkie źródła 5G, szczepionki a nawet LGBT. Muszę ją znaleźć wsród piramid...
+    </um-card>
     <div class="row" *ngFor="let row of (toggles$ | async); index as rowIdx; trackBy: trackByIndex">
       <um-egypt-toggle-button *ngFor="let toggle of row; index as colIdx; trackBy: trackByIndex"
                               [value]="toggle"
                               (click)="onToggleClick(rowIdx, colIdx)"
       ></um-egypt-toggle-button>
     </div>
-    <!--    <img *ngIf="valid$ | async" class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png" alt="success"/>-->
-    <img class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png" alt="success"/>
+    <img *ngIf="valid$ | async" class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png" alt="success"/>
   `,
   styleUrls: ['./egypt.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
