@@ -5,6 +5,9 @@ import {DeadlyWavesComponent} from './deadly-waves/deadly-waves.component';
 import {ArtifactComponent} from './artifact/artifact.component';
 import {ClockComponent} from './clock/clock.component';
 import {RelaxComponent} from './relax/relax.component';
+import {HomeComponent} from './home/home.component';
+import {HackerComponent} from './hacker/hacker.component';
+import {WeddingComponent} from './wedding/wedding.component';
 
 
 export const routes: Routes = [
@@ -13,6 +16,10 @@ export const routes: Routes = [
   {path: 'egypt', component: EgyptComponent},
   {path: 'deadly-waves', component: DeadlyWavesComponent},
   {path: 'relax', component: RelaxComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'hacker', component: HackerComponent},
+  {path: 'wedding', component: WeddingComponent},
+  {path: 'clock', component: ClockComponent},
 ];
 
 @NgModule({

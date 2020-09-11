@@ -8,11 +8,11 @@ import {HackerComponent} from './hacker/hacker.component';
 import {WeddingComponent} from './wedding/wedding.component';
 
 export const puzzles = [
+  HomeComponent,
   RelaxComponent,
   DeadlyWavesComponent,
   EgyptComponent,
   ArtifactComponent,
-  HomeComponent,
   ClockComponent,
   HackerComponent,
   WeddingComponent,
