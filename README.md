@@ -1,27 +1,6 @@
-# UnlockMe
+# The project was made in hurry and is completly dirty - maby someday i'll have some time to clean it up :)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+unlock-me is a puzzle game made which I made as a birthday gift for my fiancee. It's a PWA written in Angular. I've tried to apply as many non-obvious solutions as possible, i.e.
+* _RelaxComponent_ uses device orientation to determine if it's stable for a period of time, then transmits the secret code using phone vibration.
+* _DeadlyWavesComponent_ puzzle is solved by turning the phone offline (damn you, 5G!)
+* _EgyptComponent_  wants the user to connect the phone to the charger (the plot tells you to put it on the altar - inductive charger :) )
