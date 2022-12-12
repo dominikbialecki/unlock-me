@@ -27,6 +27,7 @@ import {
 } from './christmas/puzzle/mission-start/mission-start-decline/mission-start-decline.component';
 import {PuzzlePortalComponent} from './christmas/puzzle/command-center/puzzle-portal/puzzle-portal.component';
 import {CommandCenterComponent} from './christmas/puzzle/command-center/command-center.component';
+import {NgOptimizedImage} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,11 +51,12 @@ import {CommandCenterComponent} from './christmas/puzzle/command-center/command-
     CommandCenterComponent,
     PuzzlePortalComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

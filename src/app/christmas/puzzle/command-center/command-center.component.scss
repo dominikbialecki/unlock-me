@@ -1,3 +1,14 @@
 :host {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
+  grid-row-gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+um-puzzle-portal {
+ height: 100%;
 }
