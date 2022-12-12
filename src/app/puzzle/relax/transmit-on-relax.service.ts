@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {fromEvent, Observable, timer} from 'rxjs';
 import {buffer, filter, map, throttle} from 'rxjs/operators';
-import {VibrationTransmitterService} from '../vibration-transmitter.service';
+import {VibrationTransmitterService} from '../../services/vibration-transmitter.service';
 
 interface Orientation {
   alpha?: number;

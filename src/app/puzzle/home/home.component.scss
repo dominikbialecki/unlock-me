@@ -1,6 +1,6 @@
 :host {
   display: block;
-  background: url('~src/assets/home/home-background.jpg') center;
+  background: url('../../../assets/home/home-background.jpg') center;
   background-size: cover;
   background-position-x: 55%;
   position: relative;
@@ -18,34 +18,34 @@
 .corgi-1 {
   bottom: 20%;
   left: 5%;
-  background-image: url('~src/assets/dogs/corgi.png');
+  background-image: url('../../../assets/dogs/corgi.png');
   animation: run-y 20s ease-in-out;
 }
 
 .bulldog {
   bottom: 25%;
   left: 20%;
-  background-image: url('~src/assets/dogs/bulldog.png');
+  background-image: url('../../../assets/dogs/bulldog.png');
 }
 
 .puppy {
   bottom: 0;
   left: 30%;
-  background-image: url('~src/assets/dogs/puppy.png');
+  background-image: url('../../../assets/dogs/puppy.png');
   animation: run 10s ease-in-out infinite;
 }
 
 .spaniel {
   bottom: 5%;
   left: 65%;
-  background-image: url('~src/assets/dogs/spaniel.png');
+  background-image: url('../../../assets/dogs/spaniel.png');
 }
 
 
 .corgi-2 {
   top: 12%;
   left: 50%;
-  background-image: url('~src/assets/dogs/corgi.png');
+  background-image: url('../../../assets/dogs/corgi.png');
 }
 
 um-next-card, .form {

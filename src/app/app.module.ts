@@ -3,22 +3,21 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {EgyptComponent} from './egypt/egypt.component';
-import {DeadlyWavesComponent} from './deadly-waves/deadly-waves.component';
-import {EgyptToggleButtonComponent} from './egypt/egypt-toggle-button/egypt-toggle-button.component';
-import {PuzzleSolvedDirective} from './puzzle-solved.directive';
-import {ArtifactComponent} from './artifact/artifact.component';
-import {ClockComponent} from './clock/clock.component';
+import {EgyptComponent} from './puzzle/egypt/egypt.component';
+import {DeadlyWavesComponent} from './puzzle/deadly-waves/deadly-waves.component';
+import {EgyptToggleButtonComponent} from './puzzle/egypt/egypt-toggle-button/egypt-toggle-button.component';
+import {PuzzleSolvedDirective} from './puzzle/puzzle-solved.directive';
+import {ArtifactComponent} from './puzzle/artifact/artifact.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {HomeComponent} from './home/home.component';
-import {RelaxComponent} from './relax/relax.component';
-import {HackerComponent} from './hacker/hacker.component';
-import {WeddingComponent} from './wedding/wedding.component';
-import {CardComponent} from './card/card.component';
-import {NextCardComponent} from './next-card/next-card.component';
-import {NumberFormComponent} from './number-form/number-form.component';
-import {MatrixComponent} from './hacker/matrix/matrix.component';
+import {HomeComponent} from './puzzle/home/home.component';
+import {RelaxComponent} from './puzzle/relax/relax.component';
+import {HackerComponent} from './puzzle/hacker/hacker.component';
+import {WeddingComponent} from './puzzle/wedding/wedding.component';
+import {CardComponent} from './ui-components/card/card.component';
+import {NextCardComponent} from './ui-components/next-card/next-card.component';
+import {NumberFormComponent} from './ui-components/number-form/number-form.component';
+import {MatrixComponent} from './puzzle/hacker/matrix/matrix.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import {MatrixComponent} from './hacker/matrix/matrix.component';
     EgyptToggleButtonComponent,
     PuzzleSolvedDirective,
     ArtifactComponent,
-    ClockComponent,
     HomeComponent,
     RelaxComponent,
     HackerComponent,
