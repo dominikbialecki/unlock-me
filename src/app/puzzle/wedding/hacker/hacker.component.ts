@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {debounceTime, filter, first, map, takeUntil} from 'rxjs/operators';
-import {PuzzleSchedulerService} from '../puzzle-scheduler.service';
+import {PuzzleSchedulerService} from '../../puzzle-scheduler.service';
 
 @Component({
   selector: 'um-hacker',

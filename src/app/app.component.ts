@@ -23,13 +23,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.scheduler.register(...puzzles);
-    this.scheduler.currentPuzzle$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(component => {
-        const path = routes.find(r => r.component === component).path;
-        this.router.navigate([path]);
-      });
+    // this.scheduler.register(...puzzles);
+    // this.scheduler.currentPuzzle$
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe(component => {
+    //     const path = routes.find(r => r.component === component).path;
+    //     this.router.navigate([path]);
+    //   });
   }
 
   ngOnDestroy() {

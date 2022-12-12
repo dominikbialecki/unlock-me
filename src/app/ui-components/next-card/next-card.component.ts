@@ -5,7 +5,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   template: `
     <um-card>
       <ng-content></ng-content>
-      <button class="next" umPuzzleSolved>DALEJ</button>
+      <button class="ui-button" umPuzzleSolved>DALEJ</button>
     </um-card>
   `,
   styleUrls: ['./next-card.component.scss'],

@@ -1,26 +1,23 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {EgyptComponent} from './puzzle/egypt/egypt.component';
-import {DeadlyWavesComponent} from './puzzle/deadly-waves/deadly-waves.component';
-import {ArtifactComponent} from './puzzle/artifact/artifact.component';
-import {RelaxComponent} from './puzzle/relax/relax.component';
-import {HomeComponent} from './puzzle/home/home.component';
-import {HackerComponent} from './puzzle/hacker/hacker.component';
-import {WeddingComponent} from './puzzle/wedding/wedding.component';
+import {MissionStartComponent} from './puzzle/christmas/mission-start/mission-start.component';
+import {
+  MissionStartConfirmComponent
+} from './puzzle/christmas/mission-start/mission-start-confirm/mission-start-confirm.component';
+import {
+  MissionStartDeclineComponent
+} from './puzzle/christmas/mission-start/mission-start-decline/mission-start-decline.component';
 
 
 export const routes: Routes = [
-  {path: 'artifact', component: ArtifactComponent},
-  {path: 'egypt', component: EgyptComponent},
-  {path: 'deadly-waves', component: DeadlyWavesComponent},
-  {path: 'relax', component: RelaxComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'hacker', component: HackerComponent},
-  {path: 'wedding', component: WeddingComponent},
+  {path: 'mission-start', component: MissionStartComponent},
+  {path: 'mission-start/confirm', component: MissionStartConfirmComponent},
+  {path: 'mission-start/decline', component: MissionStartDeclineComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
