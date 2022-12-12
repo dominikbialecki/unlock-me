@@ -18,9 +18,15 @@ import {CardComponent} from './ui-components/card/card.component';
 import {NextCardComponent} from './ui-components/next-card/next-card.component';
 import {NumberFormComponent} from './ui-components/number-form/number-form.component';
 import {MatrixComponent} from './puzzle/wedding/hacker/matrix/matrix.component';
-import { MissionStartComponent } from './puzzle/christmas/mission-start/mission-start.component';
-import { MissionStartConfirmComponent } from './puzzle/christmas/mission-start/mission-start-confirm/mission-start-confirm.component';
-import { MissionStartDeclineComponent } from './puzzle/christmas/mission-start/mission-start-decline/mission-start-decline.component';
+import {MissionStartComponent} from './christmas/puzzle/mission-start/mission-start.component';
+import {
+  MissionStartConfirmComponent
+} from './christmas/puzzle/mission-start/mission-start-confirm/mission-start-confirm.component';
+import {
+  MissionStartDeclineComponent
+} from './christmas/puzzle/mission-start/mission-start-decline/mission-start-decline.component';
+import {PuzzlePortalComponent} from './christmas/puzzle/command-center/puzzle-portal/puzzle-portal.component';
+import {CommandCenterComponent} from './christmas/puzzle/command-center/command-center.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,9 @@ import { MissionStartDeclineComponent } from './puzzle/christmas/mission-start/m
     MatrixComponent,
     MissionStartComponent,
     MissionStartConfirmComponent,
-    MissionStartDeclineComponent
+    MissionStartDeclineComponent,
+    CommandCenterComponent,
+    PuzzlePortalComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,4 +58,5 @@ import { MissionStartDeclineComponent } from './puzzle/christmas/mission-start/m
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
