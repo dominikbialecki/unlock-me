@@ -1,16 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MissionStartComponent} from './christmas/puzzle/mission-start/mission-start.component';
+import {MissionStartComponent} from './christmas/mission-start/mission-start.component';
 import {
   MissionStartConfirmComponent
-} from './christmas/puzzle/mission-start/mission-start-confirm/mission-start-confirm.component';
+} from './christmas/mission-start/mission-start-confirm/mission-start-confirm.component';
 import {
   MissionStartDeclineComponent
-} from './christmas/puzzle/mission-start/mission-start-decline/mission-start-decline.component';
-import {MissionStartGuard} from './christmas/puzzle/mission-start/mission-start.guard';
+} from './christmas/mission-start/mission-start-decline/mission-start-decline.component';
+import {MissionStartGuard} from './christmas/mission-start/mission-start.guard';
 import {CommandCenterComponent} from './christmas/command-center/command-center.component';
 import {HitTheMoleComponent} from './christmas/puzzle/hit-the-mole/hit-the-mole.component';
-import {MemoryComponent} from './christmas/memory/memory.component';
+import {MemoryComponent} from './christmas/puzzle/memory/memory.component';
+import {DrumPuzzleComponent} from './christmas/puzzle/drum-puzzle/drum-puzzle.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,7 @@ export const routes: Routes = [
         path: 'puzzle', children: [
           {path: 'hit-the-mole', component: HitTheMoleComponent},
           {path: 'memory', component: MemoryComponent},
+          {path: 'drum', component: DrumPuzzleComponent},
         ]
       },
 

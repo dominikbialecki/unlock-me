@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Observable, timer} from 'rxjs';
+import {VibrationTransmitter} from './vibration-transmitter';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VibrationTransmitterService {
+export class CodeVibrationTransmitterService implements VibrationTransmitter {
 
   private static readonly VIBRATION_DURATION = 100;
   private static readonly VIBRATION_PAUSE_DURATION = 50;
@@ -20,8 +21,8 @@ export class VibrationTransmitterService {
     const vibrations = [];
     pattern.forEach(num => {
       for (let i = 1; i <= num; i++) {
-        vibrations.push(VibrationTransmitterService.VIBRATION_DURATION);
-        vibrations.push(i === num ? VibrationTransmitterService.NUMBER_PAUSE_DURATION : VibrationTransmitterService.VIBRATION_PAUSE_DURATION);
+        vibrations.push(CodeVibrationTransmitterService.VIBRATION_DURATION);
+        vibrations.push(i === num ? CodeVibrationTransmitterService.NUMBER_PAUSE_DURATION : CodeVibrationTransmitterService.VIBRATION_PAUSE_DURATION);
       }
     });
     return vibrations;

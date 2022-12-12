@@ -28,6 +28,13 @@ export class PuzzleService {
       path: 'christmas/puzzle/memory'
     },
     {
+      id: 'drum',
+      image: 'assets/christmas/drum.jpg',
+      completed: true,
+      date: '12-12-2022',
+      path: 'christmas/puzzle/drum'
+    },
+    {
       id: 'third',
       image: 'assets/christmas/harry-potter.jpg',
       completed: false,

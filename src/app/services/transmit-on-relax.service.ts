@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {fromEvent, Observable, timer} from 'rxjs';
 import {buffer, filter, map, throttle} from 'rxjs/operators';
-import {VibrationTransmitterService} from '../../../services/vibration-transmitter.service';
+import {CodeVibrationTransmitterService} from './code-vibration-transmitter.service';
+import {VibrationTransmitter} from './vibration-transmitter';
 
 interface Orientation {
   alpha?: number;
@@ -12,7 +13,7 @@ interface Orientation {
 @Injectable({providedIn: 'root'})
 export class TransmitOnRelaxService {
 
-  constructor(private vibrations: VibrationTransmitterService) {
+  constructor(private vibrations: VibrationTransmitter) {
   }
 
   transmit(code: number[]): Observable<unknown> {

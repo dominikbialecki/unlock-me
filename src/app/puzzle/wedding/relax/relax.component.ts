@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {TransmitOnRelaxService} from './transmit-on-relax.service';
+import {TransmitOnRelaxService} from '../../../services/transmit-on-relax.service';
+import {CodeVibrationTransmitterService} from '../../../services/code-vibration-transmitter.service';
+import {VibrationTransmitter} from '../../../services/vibration-transmitter';
 
 @Component({
   selector: 'um-relax',
@@ -18,7 +20,11 @@ import {TransmitOnRelaxService} from './transmit-on-relax.service';
     </ng-template>
   `,
   styleUrls: ['./relax.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    TransmitOnRelaxService,
+    {provide: VibrationTransmitter, useExisting: CodeVibrationTransmitterService},
+  ]
 })
 export class RelaxComponent implements OnInit, OnDestroy {
 

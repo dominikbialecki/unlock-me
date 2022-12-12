@@ -18,19 +18,20 @@ import {CardComponent} from './ui-components/card/card.component';
 import {NextCardComponent} from './ui-components/next-card/next-card.component';
 import {NumberFormComponent} from './ui-components/number-form/number-form.component';
 import {MatrixComponent} from './puzzle/wedding/hacker/matrix/matrix.component';
-import {MissionStartComponent} from './christmas/puzzle/mission-start/mission-start.component';
+import {MissionStartComponent} from './christmas/mission-start/mission-start.component';
 import {
   MissionStartConfirmComponent
-} from './christmas/puzzle/mission-start/mission-start-confirm/mission-start-confirm.component';
+} from './christmas/mission-start/mission-start-confirm/mission-start-confirm.component';
 import {
   MissionStartDeclineComponent
-} from './christmas/puzzle/mission-start/mission-start-decline/mission-start-decline.component';
+} from './christmas/mission-start/mission-start-decline/mission-start-decline.component';
 import {PuzzlePortalComponent} from './christmas/command-center/puzzle-portal/puzzle-portal.component';
 import {CommandCenterComponent} from './christmas/command-center/command-center.component';
 import {NgOptimizedImage} from '@angular/common';
 import { HitTheMoleComponent } from './christmas/puzzle/hit-the-mole/hit-the-mole.component';
-import { MemoryComponent } from './christmas/memory/memory.component';
+import { MemoryComponent } from './christmas/puzzle/memory/memory.component';
 import { ExplosionDirective } from './ui-components/explosion/explosion.directive';
+import { DrumPuzzleComponent } from './christmas/puzzle/drum-puzzle/drum-puzzle.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ExplosionDirective } from './ui-components/explosion/explosion.directiv
     HitTheMoleComponent,
     MemoryComponent,
     ExplosionDirective,
+    DrumPuzzleComponent,
   ],
     imports: [
         BrowserModule,
