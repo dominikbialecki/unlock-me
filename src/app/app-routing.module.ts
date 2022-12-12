@@ -10,6 +10,7 @@ import {
 import {MissionStartGuard} from './christmas/puzzle/mission-start/mission-start.guard';
 import {CommandCenterComponent} from './christmas/command-center/command-center.component';
 import {HitTheMoleComponent} from './christmas/puzzle/hit-the-mole/hit-the-mole.component';
+import {MemoryComponent} from './christmas/memory/memory.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
       {
         path: 'puzzle', children: [
           {path: 'hit-the-mole', component: HitTheMoleComponent},
+          {path: 'memory', component: MemoryComponent},
         ]
       },
 

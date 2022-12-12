@@ -29,6 +29,8 @@ import {PuzzlePortalComponent} from './christmas/command-center/puzzle-portal/pu
 import {CommandCenterComponent} from './christmas/command-center/command-center.component';
 import {NgOptimizedImage} from '@angular/common';
 import { HitTheMoleComponent } from './christmas/puzzle/hit-the-mole/hit-the-mole.component';
+import { MemoryComponent } from './christmas/memory/memory.component';
+import { ExplosionDirective } from './ui-components/explosion/explosion.directive';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { HitTheMoleComponent } from './christmas/puzzle/hit-the-mole/hit-the-mol
     CommandCenterComponent,
     PuzzlePortalComponent,
     HitTheMoleComponent,
+    MemoryComponent,
+    ExplosionDirective,
   ],
     imports: [
         BrowserModule,

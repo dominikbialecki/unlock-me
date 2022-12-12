@@ -42,3 +42,28 @@ html, body {
   font-family: "digital-7";
   src: local("digital-7"), url(./assets/fonts/digital-7/digital-7.ttf) format("truetype");
 }
+
+[umExplosion] {
+  // explosion container
+  .particles-container {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    animation: explode 0.5s reverse linear;
+    transform: translate(-50%, -50%);
+    font-size: 0.75rem;
+  }
+
+  @keyframes explode {
+    100% {
+      top: 50%;
+      left: 50%;
+      transform: scale(3), translate(-50%, -50%);
+    }
+  }
+
+}

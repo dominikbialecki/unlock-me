@@ -34,6 +34,9 @@
               "src/assets",
               "src/manifest.webmanifest"
             ],
+            "allowedCommonJsDependencies": [
+              "dayjs"
+            ],
             "styles": [
               "src/styles.scss"
             ],

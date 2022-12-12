@@ -14,18 +14,18 @@ export class PuzzleService {
 
   private puzzles: Puzzle[] = [
     {
-      id: 'first',
+      id: 'harry-potter',
       image: 'assets/christmas/harry-potter.jpg',
       completed: true,
       date: '12-12-2022',
       path: 'christmas/puzzle/hit-the-mole'
     },
     {
-      id: 'second',
-      image: 'assets/christmas/harry-potter.jpg',
-      completed: false,
-      date: '13-12-2022',
-      path: 'christmas/puzzle/second'
+      id: 'memory',
+      image: 'assets/christmas/memory.jpg',
+      completed: true,
+      date: '12-12-2022',
+      path: 'christmas/puzzle/memory'
     },
     {
       id: 'third',

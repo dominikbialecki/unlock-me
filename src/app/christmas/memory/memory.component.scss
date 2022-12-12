@@ -1,0 +1,48 @@
+:host {
+  display: block;
+}
+
+.word {
+  margin-bottom: 4px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
+}
+
+.letter {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1s 0.5s ease;
+  color: transparent;
+}
+
+.letter.type-1 {
+  background: url(~/src/assets/christmas/memory/gingerbread-man-1.png) no-repeat center;
+  background-size: contain;
+}
+
+.letter.type-2 {
+  background: url(~/src/assets/christmas/memory/gingerbread-man-2.png) no-repeat center;
+  background-size: contain;
+}
+
+.letter.type-3 {
+  background: url(~/src/assets/christmas/memory/gingerbread-man-3.png) no-repeat center;
+  background-size: contain;
+}
+
+.letter.selected {
+  color: #111;
+  background: none;
+  opacity: 0;
+  pointer-events: none;
+}
