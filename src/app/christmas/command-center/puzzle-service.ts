@@ -18,7 +18,7 @@ export class PuzzleService {
       image: 'assets/christmas/harry-potter.jpg',
       completed: true,
       date: '12-12-2022',
-      path: 'christmas/puzzle/first'
+      path: 'christmas/puzzle/hit-the-mole'
     },
     {
       id: 'second',

@@ -25,9 +25,10 @@ import {
 import {
   MissionStartDeclineComponent
 } from './christmas/puzzle/mission-start/mission-start-decline/mission-start-decline.component';
-import {PuzzlePortalComponent} from './christmas/puzzle/command-center/puzzle-portal/puzzle-portal.component';
-import {CommandCenterComponent} from './christmas/puzzle/command-center/command-center.component';
+import {PuzzlePortalComponent} from './christmas/command-center/puzzle-portal/puzzle-portal.component';
+import {CommandCenterComponent} from './christmas/command-center/command-center.component';
 import {NgOptimizedImage} from '@angular/common';
+import { HitTheMoleComponent } from './christmas/puzzle/hit-the-mole/hit-the-mole.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {NgOptimizedImage} from '@angular/common';
     MissionStartDeclineComponent,
     CommandCenterComponent,
     PuzzlePortalComponent,
+    HitTheMoleComponent,
   ],
     imports: [
         BrowserModule,

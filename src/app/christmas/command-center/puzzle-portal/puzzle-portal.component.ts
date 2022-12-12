@@ -48,7 +48,7 @@ export class PuzzlePortalComponent implements OnChanges {
   onClick() {
     if (this.isActive) {
       this.selected = true;
-      setTimeout(() => this.router.navigate([this.puzzle.path]), 2);
+      setTimeout(() => this.router.navigate([this.puzzle.path]), 500);
     }
   }
 }

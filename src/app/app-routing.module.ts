@@ -8,7 +8,8 @@ import {
   MissionStartDeclineComponent
 } from './christmas/puzzle/mission-start/mission-start-decline/mission-start-decline.component';
 import {MissionStartGuard} from './christmas/puzzle/mission-start/mission-start.guard';
-import {CommandCenterComponent} from './christmas/puzzle/command-center/command-center.component';
+import {CommandCenterComponent} from './christmas/command-center/command-center.component';
+import {HitTheMoleComponent} from './christmas/puzzle/hit-the-mole/hit-the-mole.component';
 
 
 export const routes: Routes = [
@@ -20,6 +21,12 @@ export const routes: Routes = [
       {path: 'mission-start/confirm', component: MissionStartConfirmComponent},
       {path: 'mission-start/decline', component: MissionStartDeclineComponent},
       {path: 'command-center', component: CommandCenterComponent},
+      {
+        path: 'puzzle', children: [
+          {path: 'hit-the-mole', component: HitTheMoleComponent},
+        ]
+      },
+
     ]
   },
 ];

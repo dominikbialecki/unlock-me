@@ -20,7 +20,7 @@
   &.selected .tv {
     z-index: 1000;
     transform: scale(10);
-    filter: brightness(10000%)
+    filter:  brightness(300%);
   }
 }
 
@@ -40,7 +40,7 @@ $height: 39.375vw;
 
 
 .tv {
-  transition: all 2s ease;
+  transition: all 2s ease-in;
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
 
   background: #333;
