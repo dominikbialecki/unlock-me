@@ -12,6 +12,7 @@ import {CommandCenterComponent} from './christmas/command-center/command-center.
 import {HitTheMoleComponent} from './christmas/puzzle/hit-the-mole/hit-the-mole.component';
 import {MemoryComponent} from './christmas/puzzle/memory/memory.component';
 import {DrumPuzzleComponent} from './christmas/puzzle/drum-puzzle/drum-puzzle.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 
 export const routes: Routes = [
@@ -37,7 +38,8 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class AppRoutingModule {
 }

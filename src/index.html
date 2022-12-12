@@ -9,6 +9,13 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#1976d2">
+  <script>
+    if (document.location.href.includes('localhost')) {
+      document.write("<base href='/'/>");
+   } else {
+      document.write("<base href='/unlock-me/'>");
+    }
+  </script>
 </head>
 <body>
   <um-root></um-root>

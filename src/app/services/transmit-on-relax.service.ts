@@ -30,7 +30,7 @@ export class TransmitOnRelaxService {
 
   private isSteady(orientations: Orientation[]): boolean {
     const [min, max] = this.minMax(orientations);
-    return [max.alpha - min.alpha, max.beta - min.beta, max.gamma - min.gamma].every(delta => delta < 2);
+    return [max.alpha - min.alpha, max.beta - min.beta, max.gamma - min.gamma].every(delta => delta < 10);
   }
 
   private minMax(orientations: Orientation[]): [Orientation, Orientation] {

@@ -2,9 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {PuzzleSchedulerService} from './puzzle/puzzle-scheduler.service';
 import {Router} from '@angular/router';
-import {takeUntil} from 'rxjs/operators';
-import {routes} from './app-routing.module';
-import {puzzles} from './puzzle/puzzles';
 
 @Component({
   selector: 'um-root',
