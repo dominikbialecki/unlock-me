@@ -64,10 +64,12 @@ class Mole {
 
       <div class="mole-container" *ngIf="started$ | async">
         <ng-container *ngFor="let mole of moles$ | async">
-          <div *ngIf="mole.shouldShow$ | async"
+          <div umExplosion="✨"
+               [explodeFromCenter]="true"
                class="mole"
                [ngStyle]="{'top.%': mole.top, 'left.%': mole.left}"
                [ngClass]="mole.type"
+               [class.hidden]="!(mole.shouldShow$ | async)"
                (click)="mole.onHit()"
           >
           </div>

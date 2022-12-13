@@ -49,6 +49,11 @@ html, body {
     position: absolute;
     user-select: none;
     pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: scale(3), translate(-50%, -50%);
+    visibility: visible;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .particle {

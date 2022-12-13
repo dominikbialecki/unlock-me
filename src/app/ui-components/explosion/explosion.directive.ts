@@ -8,6 +8,7 @@ import {Directive, ElementRef, HostListener, Input} from '@angular/core';
 export class ExplosionDirective {
 
   @Input('umExplosion') emoji: string = '⭐';
+  @Input() explodeFromCenter: boolean = false;
 
   private options = {
     radius: 50, // explosion size
@@ -23,8 +24,10 @@ export class ExplosionDirective {
     const options = this.options;
     const container = document.createElement('div');
     container.classList.add('particles-container');
-    container.style.left = e.clientX + "px";
-    container.style.top = e.clientY + "px";
+    if (!this.explodeFromCenter) {
+      container.style.left = e.clientX + "px";
+      container.style.top = e.clientY + "px";
+    }
     this.elementRef.nativeElement.appendChild(container);
 
     for (let i = 0; i < options.points; i++) {
