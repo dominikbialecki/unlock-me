@@ -32,6 +32,7 @@ import { HitTheMoleComponent } from './christmas/puzzle/hit-the-mole/hit-the-mol
 import { MemoryComponent } from './christmas/puzzle/memory/memory.component';
 import { ExplosionDirective } from './ui-components/explosion/explosion.directive';
 import { DrumPuzzleComponent } from './christmas/puzzle/drum-puzzle/drum-puzzle.component';
+import { BatteryComponent } from './christmas/puzzle/battery/battery.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DrumPuzzleComponent } from './christmas/puzzle/drum-puzzle/drum-puzzle.
     MemoryComponent,
     ExplosionDirective,
     DrumPuzzleComponent,
+    BatteryComponent,
   ],
     imports: [
         BrowserModule,
