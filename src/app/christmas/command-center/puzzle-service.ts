@@ -29,7 +29,7 @@ export class PuzzleService {
     },
     {
       id: 'drum',
-      image: 'assets/christmas/drum.jpg',
+      image: 'assets/christmas/drum/drum-poster.png',
       completed: true,
       date: '12-12-2022',
       path: 'christmas/puzzle/drum'

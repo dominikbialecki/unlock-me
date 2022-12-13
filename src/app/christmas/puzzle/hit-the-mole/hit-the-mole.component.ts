@@ -48,34 +48,37 @@ class Mole {
 @Component({
   selector: 'um-hit-the-mole',
   template: `
-    <ng-container *ngIf="allGamesPassed; else game">
-      <um-next-card>
-        <p>Gratulacje!</p>
-      </um-next-card>
-    </ng-container>
+      <div class="background"></div>
+      <div class="wrapper">
+          <ng-container *ngIf="allGamesPassed; else game">
+              <um-next-card>
+                  <p>Gratulacje!</p>
+              </um-next-card>
+          </ng-container>
 
-    <ng-template #game>
-      <button *ngIf="!(started$ | async)"
-              class="ui-button"
-              (click)="start()"
-      >
-        START
-      </button>
+          <ng-template #game>
+              <button *ngIf="!(started$ | async)"
+                      class="ui-button"
+                      (click)="start()"
+              >
+                  START
+              </button>
 
-      <div class="mole-container" *ngIf="started$ | async">
-        <ng-container *ngFor="let mole of moles$ | async">
-          <div umExplosion="✨"
-               [explodeFromCenter]="true"
-               class="mole"
-               [ngStyle]="{'top.%': mole.top, 'left.%': mole.left}"
-               [ngClass]="mole.type"
-               [class.hidden]="!(mole.shouldShow$ | async)"
-               (click)="mole.onHit()"
-          >
-          </div>
-        </ng-container>
+              <div class="mole-container" *ngIf="started$ | async">
+                  <ng-container *ngFor="let mole of moles$ | async">
+                      <div umExplosion="✨"
+                           [explodeFromCenter]="true"
+                           class="mole"
+                           [ngStyle]="{'top.%': mole.top, 'left.%': mole.left}"
+                           [ngClass]="mole.type"
+                           [class.hidden]="!(mole.shouldShow$ | async)"
+                           (click)="mole.onHit()"
+                      >
+                      </div>
+                  </ng-container>
+              </div>
+          </ng-template>
       </div>
-    </ng-template>
   `,
   styleUrls: ['./hit-the-mole.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

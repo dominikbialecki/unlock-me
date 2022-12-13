@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {merge, of, Subject} from 'rxjs';
 import {TransmitOnRelaxService} from '../../../services/transmit-on-relax.service';
 import {delay, filter, finalize, map, scan, takeUntil, tap} from 'rxjs/operators';
@@ -10,7 +10,7 @@ import {RhythmVibrationTransmitterService} from './rhythm-vibration-transmitter.
   selector: 'um-drum-puzzle',
   template: `
     <ng-container *ngIf="!valid else solved">
-      <div class="drum" (click)="onDrumClick()">DRUM</div>
+      <div class="drum" (click)="onDrumClick()"></div>
     </ng-container>
 
     <ng-template #solved>
@@ -29,6 +29,7 @@ import {RhythmVibrationTransmitterService} from './rhythm-vibration-transmitter.
 })
 export class DrumPuzzleComponent implements OnInit, OnDestroy {
 
+  @HostBinding('class.valid')
   valid = false;
   private destroy$ = new Subject<boolean>();
   readonly rhythm = [400, 400, 200, 200, 400, 200, 200, 200, 400, 200, 200];
@@ -50,6 +51,8 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
   }
 
   onDrumClick() {
+    navigator.vibrate(100)
+
     if (!this.isListening) {
       this.validateRhythm();
     }
