@@ -31,7 +31,7 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
 
   valid = false;
   private destroy$ = new Subject<boolean>();
-  readonly rhythm = [0, 410, 389, 175, 203, 378, 179, 196, 187, 382, 178];
+  readonly rhythm = [400, 400, 200, 200, 400, 200, 200, 200, 400, 200, 200];
   private isListening = false;
   private clicks$ = new Subject();
 
@@ -41,7 +41,7 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.transmit.transmit(this.rhythm)
       .pipe(takeUntil(this.destroy$))
-      .subscribe();
+      .subscribe((dru,) => console.log('drumminnng', dru));
   }
 
   ngOnDestroy() {
@@ -58,15 +58,15 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
   }
 
   private validateRhythm() {
-    const resetTime = 5 * 1000;
+    const resetTime = 10 * 1000;
     const reset$ = of(1).pipe(delay(resetTime));
     this.isListening = true;
 
     this.clicks$.pipe(
       finalize(() => this.isListening = false),
       map(() => dayjs()),
-      scan((acc, mole) => [...acc, mole], []),
-      map((dates) => dates.map((date, i) => date.diff(dates[i - 1] || date, 'ms'))),
+      scan((acc, date) => [...acc, date], []),
+      map((dates) => dates.map((date, i) => dates[i + 1]?.diff(date, 'ms') || this.rhythm[this.rhythm.length - 1])),
       takeUntil(merge(reset$, this.destroy$)),
       tap(console.log),
       filter((rhythm) => rhythm.length === this.rhythm.length),
