@@ -9,18 +9,19 @@ interface HitTheMoleConfig {
 }
 
 class Mole {
-
   public shouldShow$: Observable<boolean>;
   public top: number;
   public left: number;
   public type: 'dobby' | 'kreacher';
   public isHit = false;
   public runAway = false;
+  public size: number;
 
   constructor(props: { lifespan: number }) {
     this.top = this.randomPosition();
     this.left = this.randomPosition();
     this.type = this.randomMoleType();
+    this.size = this.randomSize();
     this.shouldShow$ = of(false).pipe(delay(props.lifespan), startWith(true));
     this.shouldShow$.subscribe({
       complete: () => {
@@ -38,6 +39,10 @@ class Mole {
   private randomPosition() {
     const random = Math.random() * 100;
     return Math.min(Math.max(random, 5), 95);
+  }
+
+  private randomSize() {
+    return Math.random() * 8 + 10;
   }
 
   private randomMoleType() {
@@ -64,12 +69,12 @@ class Mole {
                   START
               </button>
 
-              <div class="mole-container" *ngIf="started$ | async">
+              <div class="mole-container" *ngIf="true">
                   <ng-container *ngFor="let mole of moles$ | async">
                       <div umExplosion="✨"
                            [explodeFromCenter]="true"
                            class="mole"
-                           [ngStyle]="{'top.%': mole.top, 'left.%': mole.left}"
+                           [ngStyle]="{'top.%': mole.top, 'left.%': mole.left, 'width.vmax': mole.size, 'height.vmax': mole.size}"
                            [ngClass]="mole.type"
                            [class.hidden]="!(mole.shouldShow$ | async)"
                            (click)="mole.onHit()"
@@ -85,6 +90,7 @@ class Mole {
 })
 export class HitTheMoleComponent {
 
+  mole = new Mole({lifespan: 1000});
   started$ = new BehaviorSubject(false);
   moles$: Observable<Mole[]>;
 

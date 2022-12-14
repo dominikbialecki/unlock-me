@@ -54,27 +54,6 @@ $height: 39.375vw;
   -5px 0px 5px -3px #000;
 }
 
-.switchinput {
-  width: 0;
-  height: 0;
-  border: 0;
-  position: absolute;
-  z-index: 6;
-  bottom: -4vmax;
-  left: calc(50% - 1.85vmax);
-  opacity: 0;
-  cursor: pointer;
-}
-
-input:checked + .switch:before {
-  border-color: transparent #03a9f4 #03a9f4 #03a9f4;
-}
-
-
-input:checked + .switch:after {
-  background: #03a9f4;
-}
-
 .cover {
   position: absolute;
   background: radial-gradient(transparent, transparent, #00000080);
@@ -114,7 +93,7 @@ input:checked + .switch:after {
   height: 100%;
 }
 
-input:checked ~ .cover:before {
+.cover:before {
   animation: turn-on 0.15s ease 0s 1, turned-on 1s ease 0.15s infinite;
 }
 

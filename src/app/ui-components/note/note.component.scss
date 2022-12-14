@@ -3,11 +3,13 @@
   background: url(~/src/assets/christmas/note/note-background.jpg) no-repeat center;
   background-position: 0% 3%;
   background-size: auto 700px;
+  max-height: 700px;
+  box-sizing: border-box;
   padding: 16px;
   text-align: center;
   line-height: 24px;
   max-width: 540px;
-  margin: 8px;
+  margin: 2rem;
   box-shadow: 0 0 4px 4px rgb(0 0 0 / 25%);
   font-family: "shadows-into-light", Arial, Helvetica, sans-serif;
   position: relative;

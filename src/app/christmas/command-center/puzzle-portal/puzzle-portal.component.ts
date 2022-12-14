@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
   template: `
     <div class="container">
       <div class="tv">
-        <input type="checkbox" class="switchinput" checked>
         <div class="switch"></div>
         <img [alt]="puzzle.id" class="image" [src]="src">
         <div class="cover crt"></div>

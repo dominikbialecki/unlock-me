@@ -38,7 +38,7 @@ export class PuzzleService {
       id: 'third',
       image: 'assets/christmas/harry-potter.jpg',
       completed: false,
-      date: '14-12-2022',
+      date: '24-12-2022',
       path: 'christmas/command-center/puzzle/third'
     },
   ];
