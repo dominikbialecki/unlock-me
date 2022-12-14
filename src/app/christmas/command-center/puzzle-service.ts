@@ -18,28 +18,28 @@ export class PuzzleService {
       image: 'assets/christmas/harry-potter.jpg',
       completed: true,
       date: '12-12-2022',
-      path: 'christmas/puzzle/hit-the-mole'
+      path: 'christmas/command-center/puzzle/hit-the-mole'
     },
     {
       id: 'memory',
       image: 'assets/christmas/memory.jpg',
       completed: true,
       date: '12-12-2022',
-      path: 'christmas/puzzle/memory'
+      path: 'christmas/command-center/puzzle/memory'
     },
     {
       id: 'drum',
       image: 'assets/christmas/drum/drum-poster.png',
       completed: true,
       date: '12-12-2022',
-      path: 'christmas/puzzle/drum'
+      path: 'christmas/command-center/puzzle/drum'
     },
     {
       id: 'third',
       image: 'assets/christmas/harry-potter.jpg',
       completed: false,
       date: '14-12-2022',
-      path: 'christmas/puzzle/third'
+      path: 'christmas/command-center/puzzle/third'
     },
   ];
 

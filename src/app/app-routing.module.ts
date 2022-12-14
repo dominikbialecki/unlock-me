@@ -23,15 +23,7 @@ export const routes: Routes = [
       {path: 'mission-start', component: MissionStartComponent, canActivate: [MissionStartGuard]},
       {path: 'mission-start/confirm', component: MissionStartConfirmComponent},
       {path: 'mission-start/decline', component: MissionStartDeclineComponent},
-      {path: 'command-center', component: CommandCenterComponent},
-      {
-        path: 'puzzle', children: [
-          {path: 'hit-the-mole', component: HitTheMoleComponent},
-          {path: 'memory', component: MemoryComponent},
-          {path: 'drum', component: DrumPuzzleComponent},
-        ]
-      },
-
+      {path: 'command-center', loadChildren: () => import('./christmas/command-center/command-center.routes')},
     ]
   },
 ];

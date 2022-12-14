@@ -1,8 +1,11 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {PuzzleService} from './puzzle-service';
 import {shareReplay} from 'rxjs/operators';
+import {CommonModule} from '@angular/common';
+import {PuzzleModule} from '../puzzle/puzzle.module';
 
 @Component({
+  standalone: true,
   selector: 'um-command-center',
   template: `
     <ng-container *ngIf="puzzles$ | async as puzzles">
@@ -10,7 +13,11 @@ import {shareReplay} from 'rxjs/operators';
     </ng-container>
   `,
   styleUrls: ['./command-center.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    PuzzleModule,
+  ]
 })
 export class CommandCenterComponent {
   puzzles$ = this.puzzleService.getPuzzles().pipe(shareReplay(1));
