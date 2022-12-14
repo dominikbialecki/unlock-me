@@ -2,8 +2,16 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: auto;
 }
 
 :host > ::ng-deep router-outlet + * {
-  flex: 1;
+  flex: 1 1 auto;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
 }

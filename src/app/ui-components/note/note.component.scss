@@ -27,4 +27,18 @@
   pointer-events: none;
 }
 
+:host ::ng-deep {
+  ul {
+    padding: 0 1rem;
+  }
 
+  li {
+    text-align: left;
+    list-style: circle;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
