@@ -2,9 +2,7 @@
 
 html, body {
   height: 100%;
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f9f9f9;
+  margin: 0;font-family: Roboto, "Helvetica Neue", sans-serif;
   color: #111;
   background-color: #222;
 }
@@ -15,7 +13,6 @@ html, body {
   padding: 0.5rem 2.5rem;
   text-transform: uppercase;
   display: block;
-  background: transparent;
   border: none;
   appearance: none;
   font-weight: 500;

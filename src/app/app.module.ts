@@ -24,6 +24,7 @@ import {
 } from './christmas/mission-start/mission-start-decline/mission-start-decline.component';
 import {NgOptimizedImage} from '@angular/common';
 import {UiComponentsModule} from './ui-components/ui-components.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {UiComponentsModule} from './ui-components/ui-components.module';
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     NgOptimizedImage,
     UiComponentsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
