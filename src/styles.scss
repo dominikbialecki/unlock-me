@@ -4,24 +4,25 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #222;
-  color: #bbb;
+  background-color: #f9f9f9;
+  color: #111;
 }
 
 .ui-button {
-  margin: 0.5rem 0;
+  margin: 0.5rem 0.5rem;
   text-align: center;
   padding: 0.5rem 2.5rem;
   text-transform: uppercase;
   display: block;
-  background: #ffffffaa;
+  background: transparent;
   border: none;
   appearance: none;
   font-weight: 500;
   white-space: pre-wrap;
   outline: none;
+  background-color: white;
 
-  &:active {
+  &:active, &:hover {
     background: #eeeeeeaa;
   }
 }
@@ -30,18 +31,42 @@ html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+
+  &-text {
+    width: 100%;
+  }
 
   &-answers {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    ul {
+      padding: 0 1rem;
+    }
+
+    li {
+      text-align: left;
+      list-style: circle;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 }
 
 @font-face {
   font-family: "digital-7";
   src: local("digital-7"), url(./assets/fonts/digital-7/digital-7.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "shadows-into-light";
+  src: local("shadows-into-light"), url(./assets/fonts/shadows-into-light-two/shadows-into-light-two-regular.ttf) format("truetype");
 }
 
 [umExplosion] {
