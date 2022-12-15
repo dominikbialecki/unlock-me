@@ -1,9 +1,12 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 0;
 }
 
 .word {
-  margin-bottom: 4px;
+  margin-bottom: 1.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
@@ -45,4 +48,10 @@
   background: none;
   opacity: 0;
   pointer-events: none;
+}
+
+.word {
+  padding: 1rem 0;
+  background: url(~/src/assets/christmas/memory/baking-sheet.png) no-repeat center;
+  background-size: contain;
 }

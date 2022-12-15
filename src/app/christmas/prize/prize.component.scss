@@ -4,9 +4,16 @@
 }
 
 .note {
+  margin-top: 56px;
   flex: 1;
 }
 
-.note.used {
+.note.used .prize-name {
   text-decoration: line-through;
+}
+
+.prize-used-date {
+  margin-left: 1em;
+  font-size: 0.6em;
+  white-space: nowrap;
 }

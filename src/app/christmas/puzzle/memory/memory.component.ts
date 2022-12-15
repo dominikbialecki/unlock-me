@@ -1,47 +1,51 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {MemoryMessageService} from './memory-message.service';
 
 @Component({
   selector: 'um-memory',
   template: `
-      <div class="memory-puzzle" *ngIf="!isSolved else solved">
+      <div class="memory-puzzle">
           <div class="word" *ngFor="let word of wordPuzzles">
               <div class="letter"
                    umExplosion="🍪"
                    *ngFor="let letter of word.letters"
                    [class.selected]="letter.revealed"
                    [ngClass]="letter.type"
-                   (click)="word.revealLetter(letter)">
+                   (click)="onLetterClick(letter, word)">
                   {{letter.text}}
               </div>
           </div>
 
-          <button class="ui-button" (click)="reset()">Reset</button>
+          <button class="ui-button" (click)="reset()">Dokładka</button>
       </div>
-      <ng-template #solved>
-          <um-next-card>
-              Gratulacje!
-          </um-next-card>
-      </ng-template>
   `,
   styleUrls: ['./memory.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MemoryComponent implements OnInit {
 
-  private readonly password = 'CYTRYNOWY SORBET';
+  private readonly password = 'PRIZON MIKE';
   wordPuzzles: WordPuzzle[] = [];
 
-  ngOnInit() {
-    const words = this.password.split(' ');
-    this.wordPuzzles = words.map(word => new WordPuzzle(word));
+  constructor(private messageService: MemoryMessageService) {
   }
 
-  get isSolved() {
-    return this.wordPuzzles.every(word => word.isSolved());
+  ngOnInit() {
+    this.messageService.showWelcomeMessage();
+    const words = this.password.split(' ');
+    this.wordPuzzles = words.map(word => new WordPuzzle(word, 8));
   }
 
   reset() {
     this.wordPuzzles.forEach(word => word.reset());
+  }
+
+  onLetterClick(letter: LetterToggle, word: WordPuzzle) {
+    word.revealLetter(letter);
+    const isSolved = this.wordPuzzles.every(word => word.isSolved());
+    if (isSolved) {
+      this.messageService.showSuccessMessage();
+    }
   }
 }
 
@@ -49,8 +53,8 @@ export class WordPuzzle {
   letters: LetterToggle[];
   private answers: LetterToggle[] = [];
 
-  constructor(private word: string) {
-    this.letters = this.generatePuzzleLetters(word).map(letter => new LetterToggle(letter));
+  constructor(private word: string, puzzleLength: number) {
+    this.letters = this.generatePuzzleLetters(word, puzzleLength).map(letter => new LetterToggle(letter));
   }
 
   revealLetter(letter: LetterToggle) {
@@ -66,11 +70,11 @@ export class WordPuzzle {
     this.letters.forEach(letter => letter.reset());
   }
 
-  private generatePuzzleLetters(password: string): string[] {
+  private generatePuzzleLetters(password: string, puzzleLength: number): string[] {
     const passwordLetters = password.split('');
     const puzzleLetters = [...passwordLetters];
 
-    for (let i = 0; i < Math.ceil(passwordLetters.length / 3); i++) {
+    for (let i = 0; i < puzzleLength - passwordLetters.length; i++) {
       puzzleLetters.push(randomAlphabetLetter());
     }
 

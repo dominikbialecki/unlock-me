@@ -1,24 +1,16 @@
-import {ChangeDetectionStrategy, Component, HostBinding, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {merge, of, Subject} from 'rxjs';
 import {TransmitOnRelaxService} from '../../../services/transmit-on-relax.service';
-import {delay, filter, finalize, map, scan, takeUntil, tap} from 'rxjs/operators';
+import {delay, filter, finalize, map, scan, switchMap, takeUntil, tap} from 'rxjs/operators';
 import * as dayjs from 'dayjs';
 import {VibrationTransmitter} from '../../../services/vibration-transmitter';
 import {RhythmVibrationTransmitterService} from './rhythm-vibration-transmitter.service';
+import {DrumPuzzleMessageService} from './drum-puzzle-message.service';
 
 @Component({
   selector: 'um-drum-puzzle',
   template: `
-    <ng-container *ngIf="!valid else solved">
       <div class="drum" (click)="onDrumClick()"></div>
-    </ng-container>
-
-    <ng-template #solved>
-      <um-next-card>
-        Gratulacje!
-      </um-next-card>
-    </ng-template>
-
   `,
   styleUrls: ['./drum-puzzle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,13 +28,17 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
   private isListening = false;
   private clicks$ = new Subject();
 
-  constructor(private transmit: TransmitOnRelaxService) {
+  constructor(private transmit: TransmitOnRelaxService,
+              private messageService: DrumPuzzleMessageService,
+              private changeDetector: ChangeDetectorRef,
+              ) {
   }
 
   ngOnInit() {
-    this.transmit.transmit(this.rhythm)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((dru,) => console.log('drumminnng', dru));
+    this.messageService.showWelcomeMessage().pipe(
+      switchMap(() => this.transmit.transmit(this.rhythm)),
+      takeUntil(this.destroy$)
+    ).subscribe();
   }
 
   ngOnDestroy() {
@@ -51,7 +47,7 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
   }
 
   onDrumClick() {
-    navigator.vibrate(100)
+    navigator.vibrate(100);
 
     if (!this.isListening) {
       this.validateRhythm();
@@ -77,6 +73,8 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
     ).subscribe(valid => {
       console.log('valid:', valid);
       this.valid = valid;
+      this.changeDetector.detectChanges();
+      setTimeout(() => this.messageService.showSuccessMessage(), 3000);
     });
   }
 }

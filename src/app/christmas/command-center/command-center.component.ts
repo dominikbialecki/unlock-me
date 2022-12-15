@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener} from '@angular/core';
 import {PuzzleService} from './puzzle-service';
 import {shareReplay} from 'rxjs/operators';
 import {CommonModule} from '@angular/common';

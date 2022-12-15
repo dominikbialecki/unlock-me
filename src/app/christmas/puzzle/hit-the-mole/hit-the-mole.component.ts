@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {BehaviorSubject, interval, Observable, of} from 'rxjs';
-import {delay, map, scan, shareReplay, startWith, take, takeLast} from 'rxjs/operators';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {BehaviorSubject, interval, Observable, of, Subject} from 'rxjs';
+import {delay, map, scan, shareReplay, startWith, take, takeLast, takeUntil} from 'rxjs/operators';
+import {HitTheMoleMessageService} from './hit-the-mole-message.service';
 
 interface HitTheMoleConfig {
   newMoleInterval: number;
@@ -53,65 +54,64 @@ class Mole {
 @Component({
   selector: 'um-hit-the-mole',
   template: `
-      <div class="background"></div>
-      <div class="wrapper">
-          <ng-container *ngIf="allGamesPassed; else game">
-              <um-next-card>
-                  <p>Gratulacje!</p>
-              </um-next-card>
-          </ng-container>
-
-          <ng-template #game>
-              <button *ngIf="!(started$ | async)"
-                      class="ui-button"
-                      (click)="start()"
-              >
-                  START
-              </button>
-
-              <div class="mole-container" *ngIf="true">
-                  <ng-container *ngFor="let mole of moles$ | async">
-                      <div umExplosion="✨"
-                           [explodeFromCenter]="true"
-                           class="mole"
-                           [ngStyle]="{'top.%': mole.top, 'left.%': mole.left, 'width.vmax': mole.size, 'height.vmax': mole.size}"
-                           [ngClass]="mole.type"
-                           [class.hidden]="!(mole.shouldShow$ | async)"
-                           (click)="mole.onHit()"
-                      >
-                      </div>
-                  </ng-container>
-              </div>
-          </ng-template>
+    <div class="background"></div>
+    <div class="wrapper">
+      <div class="mole-container" *ngIf="started$ | async">
+        <ng-container *ngFor="let mole of moles$ | async">
+          <div umExplosion="✨"
+               [explodeFromCenter]="true"
+               class="mole"
+               [ngStyle]="{'top.%': mole.top, 'left.%': mole.left, 'width.vmax': mole.size, 'height.vmax': mole.size}"
+               [ngClass]="mole.type"
+               [class.hidden]="!(mole.shouldShow$ | async)"
+               (click)="mole.onHit()"
+          >
+          </div>
+        </ng-container>
       </div>
+    </div>
   `,
   styleUrls: ['./hit-the-mole.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HitTheMoleComponent {
+export class HitTheMoleComponent implements OnInit, OnDestroy {
 
-  mole = new Mole({lifespan: 1000});
+  destroy$ = new Subject();
   started$ = new BehaviorSubject(false);
   moles$: Observable<Mole[]>;
+
+  constructor(private messageService: HitTheMoleMessageService) {
+  }
+
+  ngOnInit() {
+    this.messageService.showWelcomeMessage().subscribe(() => {
+      this.start();
+    });
+  }
 
   private currentGameIndex = 0;
   private games: HitTheMoleConfig[] = [
     {newMoleInterval: 1000, lifespan: 900, quantity: 10},
     {newMoleInterval: 800, lifespan: 700, quantity: 12},
-    {newMoleInterval: 600, lifespan: 580, quantity: 14},
+    {newMoleInterval: 700, lifespan: 650, quantity: 14},
   ];
 
-  get allGamesPassed(): boolean {
-    return this.currentGameIndex === this.games.length;
-  }
-
   start() {
-    this.startGame(this.games[this.currentGameIndex]).subscribe(passed => {
-      this.started$.next(false);
-      if (passed) {
-        this.currentGameIndex++;
-      }
-    });
+    this.startGame(this.games[this.currentGameIndex])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(passed => {
+        this.started$.next(false);
+        if (passed) {
+          this.currentGameIndex++;
+        }
+        if (!passed) {
+          this.messageService.showLoseMessage().subscribe(() => this.start());
+        } else if (this.currentGameIndex === this.games.length) {
+          this.messageService.showWinMessage();
+        } else {
+          this.messageService.showNextLevelMessage().subscribe(() => this.start());
+        }
+      });
   }
 
   private startGame(config: HitTheMoleConfig): Observable<boolean> {
@@ -140,5 +140,10 @@ export class HitTheMoleComponent {
       scan((acc, mole) => [...acc, mole], []),
       shareReplay(1),
     );
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

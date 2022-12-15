@@ -24,7 +24,8 @@ import {
 } from './christmas/mission-start/mission-start-decline/mission-start-decline.component';
 import {NgOptimizedImage} from '@angular/common';
 import {UiComponentsModule} from './ui-components/ui-components.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgOptimizedImage,
     UiComponentsModule,
     BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
