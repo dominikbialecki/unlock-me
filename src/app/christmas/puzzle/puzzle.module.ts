@@ -7,6 +7,8 @@ import {DrumPuzzleComponent} from './drum-puzzle/drum-puzzle.component';
 import {BatteryComponent} from './battery/battery.component';
 import {UiComponentsModule} from '../../ui-components/ui-components.module';
 import {PuzzleRoutingModule} from './puzzle-routing.module';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import {PuzzleRoutingModule} from './puzzle-routing.module';
     CommonModule,
     UiComponentsModule,
     PuzzleRoutingModule,
+    MatButtonModule,
+    MatIconModule,
   ]
 })
 export class PuzzleModule {

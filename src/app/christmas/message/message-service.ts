@@ -23,4 +23,11 @@ export class MessageService {
     this.message = message;
     localStorage.setItem(this.messageKey, message);
   }
+
+  showIfNotLastSeen(config: MessageDialogData): Observable<unknown> {
+    if (this.message !== config.message) {
+      this.setMessage(config.message);
+      return this.showMessage(config);
+    }
+  }
 }

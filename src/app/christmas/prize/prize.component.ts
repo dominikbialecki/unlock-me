@@ -10,6 +10,7 @@ import {bufferTime, filter, map} from 'rxjs/operators';
   selector: 'um-prize',
   template: `
     <um-note class="note">
+      <span class="heading">Moje nagrody:</span>
       <ul *ngIf="prizes$ | async as prizes">
         <li *ngFor="let prize of prizes"
             [class.used]="prize.usedDate"

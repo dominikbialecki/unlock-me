@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {merge, of, Subject} from 'rxjs';
 import {TransmitOnRelaxService} from '../../../services/transmit-on-relax.service';
-import {delay, filter, finalize, map, scan, switchMap, takeUntil, tap} from 'rxjs/operators';
+import {delay, filter, finalize, map, scan, takeUntil, tap} from 'rxjs/operators';
 import * as dayjs from 'dayjs';
 import {VibrationTransmitter} from '../../../services/vibration-transmitter';
 import {RhythmVibrationTransmitterService} from './rhythm-vibration-transmitter.service';
@@ -10,7 +10,7 @@ import {DrumPuzzleMessageService} from './drum-puzzle-message.service';
 @Component({
   selector: 'um-drum-puzzle',
   template: `
-      <div class="drum" (click)="onDrumClick()"></div>
+    <div class="drum" (click)="onDrumClick()"></div>
   `,
   styleUrls: ['./drum-puzzle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,14 +31,15 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
   constructor(private transmit: TransmitOnRelaxService,
               private messageService: DrumPuzzleMessageService,
               private changeDetector: ChangeDetectorRef,
-              ) {
+  ) {
   }
 
   ngOnInit() {
-    this.messageService.showWelcomeMessage().pipe(
-      switchMap(() => this.transmit.transmit(this.rhythm)),
-      takeUntil(this.destroy$)
-    ).subscribe();
+    this.messageService.showWelcomeMessage().subscribe(() => {
+      this.transmit.transmit(this.rhythm)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe();
+    });
   }
 
   ngOnDestroy() {

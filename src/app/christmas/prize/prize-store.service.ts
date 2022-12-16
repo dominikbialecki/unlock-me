@@ -37,12 +37,12 @@ export class PrizeStoreService {
   private prizes$ = new BehaviorSubject<Prize[]>([]);
 
   constructor() {
-  }
-
-  getPrizes(): Observable<Prize[]> {
     let savedPrizes = localStorage.getItem(this.prizeKey);
     const prizes = this.refreshSavedPrizes(savedPrizes ? JSON.parse(savedPrizes) : undefined);
     this.storePrizes(prizes);
+  }
+
+  getPrizes(): Observable<Prize[]> {
     return this.prizes$.pipe(map((prizes) => prizes.filter(prize => prize.active)));
   }
 

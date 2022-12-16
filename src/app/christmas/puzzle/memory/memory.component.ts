@@ -1,29 +1,35 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MemoryMessageService} from './memory-message.service';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'um-memory',
   template: `
-      <div class="memory-puzzle">
-          <div class="word" *ngFor="let word of wordPuzzles">
-              <div class="letter"
-                   umExplosion="🍪"
-                   *ngFor="let letter of word.letters"
-                   [class.selected]="letter.revealed"
-                   [ngClass]="letter.type"
-                   (click)="onLetterClick(letter, word)">
-                  {{letter.text}}
-              </div>
-          </div>
-
-          <button class="ui-button" (click)="reset()">Dokładka</button>
+    <div class="memory-puzzle">
+      <div class="word" *ngFor="let word of wordPuzzles">
+        <div class="letter"
+             umExplosion="🍪"
+             *ngFor="let letter of word.letters"
+             [class.selected]="letter.revealed"
+             [ngClass]="letter.type"
+             (click)="onLetterClick(letter, word)">
+          {{letter.text}}
+        </div>
       </div>
+    </div>
+    <p [class.show]="showRefillText$ | async" class="show-refill-text">
+      WIĘCEJ!!!
+    </p>
+    <button class="refill-button" mat-mini-fab (click)="reset()">
+      <mat-icon>cookie</mat-icon>
+    </button>
   `,
   styleUrls: ['./memory.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MemoryComponent implements OnInit {
 
+  showRefillText$ = new BehaviorSubject(false);
   private readonly password = 'PRIZON MIKE';
   wordPuzzles: WordPuzzle[] = [];
 
@@ -37,7 +43,11 @@ export class MemoryComponent implements OnInit {
   }
 
   reset() {
-    this.wordPuzzles.forEach(word => word.reset());
+    this.showRefillText$.next(true);
+    setTimeout(() => {
+      this.wordPuzzles.forEach(word => word.reset());
+      this.showRefillText$.next(false);
+    }, 2000);
   }
 
   onLetterClick(letter: LetterToggle, word: WordPuzzle) {

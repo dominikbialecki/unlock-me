@@ -35,7 +35,7 @@
   position: relative;
 }
 
-$width: 70vw;
+$width: 70%;
 $height: 39.375vw;
 
 
@@ -70,9 +70,6 @@ $height: 39.375vw;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  border: 19.65vw solid #0a0a0a;
-  border-left-width: 35.1vw;
-  border-right-width: 35.1vw;
 }
 
 .cover:after {
@@ -91,27 +88,26 @@ $height: 39.375vw;
   height: 100%;
 }
 
-.cover:before {
-  animation: turn-on 0.15s ease 0s 1, turned-on 1s ease 0.15s infinite;
-}
-
-@keyframes turn-on {
-  0% {
-    border-width: 19.65vw;
-    border-left-width: 35.1vw;
-    border-right-width: 35.1vw;
-  }
-  50% {
-    border-width: 19.65vw;
-    border-left-width: 10vw;
-    border-right-width: 10vw;
-  }
-  100% {
-    border-width: 0vh;
-    border-left-width: 0vw;
-    border-right-width: 0vw;
-  }
-}
+// TODO this wasn't working on an installed app
+//.cover:before {
+//  animation: turn-on 0.15s ease 0s 1, turned-on 1s ease 0.15s infinite;
+//}
+//
+//@keyframes turn-on {
+//  0% {
+//    border-width: 19.65vw;
+//    border-left-width: 35.1vw;
+//    border-right-width: 35.1vw;
+//  }
+//  50% {
+//    border-width: 19.65vw;
+//    border-left-width: 10vw;
+//    border-right-width: 10vw;
+//  }
+//  100% {
+//    border-width: 0;
+//  }
+//}
 
 @keyframes turned-on {
   0% {

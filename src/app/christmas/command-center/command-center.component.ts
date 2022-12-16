@@ -1,8 +1,10 @@
-import {ChangeDetectionStrategy, Component, HostListener} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {PuzzleService} from './puzzle-service';
-import {shareReplay} from 'rxjs/operators';
+import {shareReplay, takeUntil} from 'rxjs/operators';
 import {CommonModule} from '@angular/common';
 import {PuzzleModule} from '../puzzle/puzzle.module';
+import {CommandCenterMessageService} from './command-center-message.service';
+import {Subject} from 'rxjs';
 
 @Component({
   standalone: true,
@@ -19,9 +21,26 @@ import {PuzzleModule} from '../puzzle/puzzle.module';
     PuzzleModule,
   ]
 })
-export class CommandCenterComponent {
+export class CommandCenterComponent implements OnInit, OnDestroy {
+
+  private destroy$ = new Subject<void>();
   puzzles$ = this.puzzleService.getPuzzles().pipe(shareReplay(1));
 
-  constructor(private puzzleService: PuzzleService) {
+  constructor(private puzzleService: PuzzleService,
+              private messageService: CommandCenterMessageService,
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.puzzles$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((puzzles) => {
+        this.messageService.showMessage(puzzles);
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

@@ -5,10 +5,11 @@
 
 .note {
   margin-top: 56px;
+  padding-top: 2rem;
   flex: 1;
 }
 
-.note.used .prize-name {
+.used .prize-name {
   text-decoration: line-through;
 }
 
