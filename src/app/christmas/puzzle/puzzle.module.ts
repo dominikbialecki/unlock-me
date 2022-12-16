@@ -9,6 +9,7 @@ import {UiComponentsModule} from '../../ui-components/ui-components.module';
 import {PuzzleRoutingModule} from './puzzle-routing.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { UnstablePathComponent } from './unstable-path/unstable-path.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
     MemoryComponent,
     DrumPuzzleComponent,
     BatteryComponent,
+    UnstablePathComponent,
   ],
   exports: [
     PuzzlePortalComponent,

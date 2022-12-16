@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+
+.map-row {
+  display: flex;
+  justify-content: center;
+}
+
+.map-element {
+  margin: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: #834005;
+
+  &.active {
+    background-color: red;
+  }
+}
+
+.game-over-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

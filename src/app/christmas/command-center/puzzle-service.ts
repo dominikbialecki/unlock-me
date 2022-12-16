@@ -14,10 +14,18 @@ export enum PuzzleId {
   HarryPotter = 'harry-potter',
   Memory = 'memory',
   Drum = 'drum',
+  UnstablePath = 'unstable-path',
   Todo = 'todo',
 }
 
 const initialPuzzles: Puzzle[] = [
+  {
+    id: PuzzleId.UnstablePath,
+    image: 'assets/christmas/harry-potter.jpg',
+    completed: false,
+    date: '12-12-2022',
+    path: 'christmas/command-center/puzzle/unstable-path',
+  },
   {
     id: PuzzleId.HarryPotter,
     image: 'assets/christmas/harry-potter.jpg',
