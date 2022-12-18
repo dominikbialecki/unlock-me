@@ -21,7 +21,7 @@ export enum PuzzleId {
 const initialPuzzles: Puzzle[] = [
   {
     id: PuzzleId.UnstablePath,
-    image: 'assets/christmas/harry-potter.jpg',
+    image: 'assets/christmas/unstable-path/indiana-jones-poster.jpg',
     completed: false,
     date: '12-12-2022',
     path: 'christmas/command-center/puzzle/unstable-path',

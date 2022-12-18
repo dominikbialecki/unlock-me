@@ -1,60 +1,86 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {BehaviorSubject, merge, Subject} from 'rxjs';
+import {filter, scan, switchMap, take, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'um-unstable-path',
   template: `
-      {{gameOver$ | async}}
-      <ng-container *ngIf="!(gameOver$ | async) else gameOver">
-          <ng-container *ngIf="position$ | async as position">
-              <div class=map-row *ngFor="let row of map; let y = index">
-                  <div class="map-element"
-                       *ngFor="let element of row; let x = index"
-                       (click)="onElementClick(element)"
-                       [class.active]="x === position.x && y === position.y"
-                  ></div>
-              </div>
-          </ng-container>
-      </ng-container>
+    <div class="map" *ngIf="position$ | async as position">
+      <div class=map-row *ngFor="let row of map; let y = index">
+        <div class="map-element"
+             *ngFor="let element of row; let x = index"
+             (click)="onElementClick(element)"
+             [class.active]="position.x === x && position.y === y"
+             [class.fallen]="element.fallen$ | async"
+             [class.initial]="x === initialCoords.x && y === initialCoords.y"
+             [class.stable]="element.stable"
+        >
+          <div class="pawn" *ngIf="x === position.x && y === position.y"></div>
+        </div>
+      </div>
+    </div>
 
-      <ng-template #gameOver>
-          <div class="game-over-wrapper">
-              <button class="refill-button" mat-mini-fab (click)="reset()">
-                  <mat-icon>cookie</mat-icon>
-              </button>
-          </div>
-      </ng-template>
+    <div class="game-over-wrapper">
+      <button class="refill-button" [style.visibility]="(gameStatus$ | async) === 'lost' ? 'visible' : 'hidden'" mat-mini-fab
+              (click)="reset()">
+        <mat-icon>replay</mat-icon>
+      </button>
+    </div>
   `,
   styleUrls: ['./unstable-path.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UnstablePathComponent implements OnInit, OnDestroy {
+  initialCoords;
   map: PathElement[][];
   private destroy$ = new Subject<void>();
   private readonly config = {
-    stepMaxTime: 3000,
+    maxUnstableInARow: 2,
   };
 
   position$ = new BehaviorSubject<PathElement>(undefined);
-  gameOver$ = new BehaviorSubject(false);
+  gameStatus$ = new BehaviorSubject<'won' | 'in progress' | 'lost'>('in progress');
 
   constructor() {
   }
 
   ngOnInit() {
     this.initGame();
-    this.position$
-      .pipe()
-      .subscribe(element => {
-        if (!element.stable) {
-          this.gameOver$.next(true);
-        }
-      });
+
+    const standsOnFallen$ = this.position$.pipe(
+      switchMap(position => position.fallen$),
+      filter(fallen => fallen)
+    );
+
+    const maxUnstableInARowReached$ = this.position$.pipe(
+      scan((unstableCount, curr) => curr.stable ? 0 : unstableCount + 1, 0),
+      filter(unstableCount => unstableCount >= this.config.maxUnstableInARow),
+    );
+
+    merge(standsOnFallen$, maxUnstableInARowReached$)
+      .pipe(
+        takeUntil(this.gameStatus$.pipe(filter(status => status === 'won'))),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => this.gameStatus$.next('lost'));
+
+
+    this.position$.pipe(
+      filter(position => position.y === 0),
+      take(1),
+      takeUntil(this.destroy$),
+    ).subscribe(() => {
+      this.gameStatus$.next('won');
+      console.log('game won');
+    });
   }
 
   onElementClick(element: PathElement) {
     const current = this.position$.value;
-    if (stepAvailablePolicy(current, element)) {
+    const isInProgress = this.gameStatus$.value === 'in progress';
+    if (isInProgress && stepAvailablePolicy(current, element)) {
+      navigator.vibrate(50);
+      element.stepOn();
       this.position$.next(element);
     }
   }
@@ -65,27 +91,26 @@ export class UnstablePathComponent implements OnInit, OnDestroy {
   }
 
   reset() {
-    this.gameOver$.next(false);
+    this.gameStatus$.next('in progress');
     this.initGame();
   }
 
   private initGame() {
     const map = [
-      [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-      [0, 0, 0, 0, 0, 1, 1, 1, 1, 0],
-      [0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-      [0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
-      [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 1, 0],
+      [0, 0, 0, 1, 1, 1, 1, 0],
+      [0, 0, 0, 1, 1, 0, 0, 0],
+      [0, 0, 0, 0, 1, 0, 0, 0],
+      [1, 1, 1, 1, 1, 0, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 0],
+      [1, 1, 0, 0, 0, 0, 0, 0],
+      [0, 1, 1, 1, 0, 0, 0, 0],
     ];
     this.map = map.map((row, y) => {
       return row.map((stable, x) => new PathElement({x, y, stable}));
     });
-    const initialElement = this.map[9][4];
+    this.initialCoords = {x: 3, y: 7};
+    const initialElement = this.map[map.length - 1][3];
     this.position$.next(initialElement);
   }
 }
@@ -94,18 +119,24 @@ class PathElement {
   public x: number;
   public y: number;
   public stable: boolean;
-  public fall= false;
+  public fallen$ = new BehaviorSubject<boolean>(false);
+  private stabilityDuration;
 
   constructor({x, y, stable}) {
     this.x = x;
     this.y = y;
     this.stable = stable;
+    this.stabilityDuration = stable ? 2500 : 500;
+  }
+
+  stepOn() {
+    setTimeout(() => this.fallen$.next(true), this.stabilityDuration);
   }
 }
 
 function stepAvailablePolicy(current: PathElement, next: PathElement): boolean {
   const {x, y} = next;
-  const movedX = Math.abs(current.x - x) === 1;
-  const movedY = Math.abs(current.y - y) === 1;
-  return movedX || movedY;
+  const diffX = Math.abs(current.x - x);
+  const diffY = Math.abs(current.y - y);
+  return diffX + diffY === 1;
 }
