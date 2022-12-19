@@ -1,19 +1,19 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, merge, Subject} from 'rxjs';
 import {filter, scan, switchMap, take, takeUntil} from 'rxjs/operators';
+import {UnstablePathMessageService} from './unstable-path-message.service';
 
 @Component({
   selector: 'um-unstable-path',
   template: `
     <div class="map" *ngIf="position$ | async as position">
-      <div class=map-row *ngFor="let row of map; let y = index">
+      <div class=map-row *ngFor="let row of map; let y = index"
+      >
         <div class="map-element"
              *ngFor="let element of row; let x = index"
              (click)="onElementClick(element)"
              [class.active]="position.x === x && position.y === y"
              [class.fallen]="element.fallen$ | async"
-             [class.initial]="x === initialCoords.x && y === initialCoords.y"
-             [class.stable]="element.stable"
         >
           <div class="pawn" *ngIf="x === position.x && y === position.y"></div>
         </div>
@@ -21,7 +21,8 @@ import {filter, scan, switchMap, take, takeUntil} from 'rxjs/operators';
     </div>
 
     <div class="game-over-wrapper">
-      <button class="refill-button" [style.visibility]="(gameStatus$ | async) === 'lost' ? 'visible' : 'hidden'" mat-mini-fab
+      <button class="refill-button" [style.visibility]="(gameStatus$ | async) === 'lost' ? 'visible' : 'hidden'"
+              mat-mini-fab
               (click)="reset()">
         <mat-icon>replay</mat-icon>
       </button>
@@ -31,7 +32,6 @@ import {filter, scan, switchMap, take, takeUntil} from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UnstablePathComponent implements OnInit, OnDestroy {
-  initialCoords;
   map: PathElement[][];
   private destroy$ = new Subject<void>();
   private readonly config = {
@@ -41,10 +41,12 @@ export class UnstablePathComponent implements OnInit, OnDestroy {
   position$ = new BehaviorSubject<PathElement>(undefined);
   gameStatus$ = new BehaviorSubject<'won' | 'in progress' | 'lost'>('in progress');
 
-  constructor() {
+  constructor(private messageService: UnstablePathMessageService) {
   }
 
   ngOnInit() {
+
+    this.messageService.showWelcomeMessage();
     this.initGame();
 
     const standsOnFallen$ = this.position$.pipe(
@@ -71,7 +73,7 @@ export class UnstablePathComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$),
     ).subscribe(() => {
       this.gameStatus$.next('won');
-      console.log('game won');
+      setTimeout(() => this.messageService.showSuccessMessage(), 1500);
     });
   }
 
@@ -97,20 +99,24 @@ export class UnstablePathComponent implements OnInit, OnDestroy {
 
   private initGame() {
     const map = [
+      [1, 1, 1, 1, 1, 1, 1, 1],
       [0, 0, 0, 0, 0, 0, 1, 0],
-      [0, 0, 0, 1, 1, 1, 1, 0],
-      [0, 0, 0, 1, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 1, 0],
+      [0, 0, 0, 0, 1, 1, 1, 0],
       [0, 0, 0, 0, 1, 0, 0, 0],
       [1, 1, 1, 1, 1, 0, 0, 0],
-      [1, 0, 0, 0, 0, 0, 0, 0],
-      [1, 1, 0, 0, 0, 0, 0, 0],
-      [0, 1, 1, 1, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 1, 1, 1, 0, 0, 0, 0],
+      [0, 0, 1, 0, 0, 0, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1],
     ];
     this.map = map.map((row, y) => {
-      return row.map((stable, x) => new PathElement({x, y, stable}));
+      return row.map((stable, x) => {
+        const steady = y === 0 || y === map.length - 1;
+        return new PathElement({x, y, stable, steady});
+      });
     });
-    this.initialCoords = {x: 3, y: 7};
-    const initialElement = this.map[map.length - 1][3];
+    const initialElement = this.map[map.length - 1][4];
     this.position$.next(initialElement);
   }
 }
@@ -118,19 +124,23 @@ export class UnstablePathComponent implements OnInit, OnDestroy {
 class PathElement {
   public x: number;
   public y: number;
+  public steady: number;
   public stable: boolean;
   public fallen$ = new BehaviorSubject<boolean>(false);
-  private stabilityDuration;
+  private readonly stabilityDuration;
 
-  constructor({x, y, stable}) {
+  constructor({x, y, stable, steady}) {
     this.x = x;
     this.y = y;
     this.stable = stable;
-    this.stabilityDuration = stable ? 2500 : 500;
+    this.steady = steady;
+    this.stabilityDuration = steady ? Infinity : stable ? 2500 : 500;
   }
 
   stepOn() {
-    setTimeout(() => this.fallen$.next(true), this.stabilityDuration);
+    if (!this.steady) {
+      setTimeout(() => this.fallen$.next(true), this.stabilityDuration);
+    }
   }
 }
 

@@ -13,6 +13,16 @@
   justify-content: center;
 }
 
+.map-row:first-of-type, .map-row:last-of-type {
+  .map-element {
+    filter: brightness(1.4);
+
+    &.active {
+      animation: none;
+    }
+  }
+}
+
 .map-element {
   width: 12vw;
   height: 12vw;
@@ -21,7 +31,7 @@
   opacity: 1;
   transition: all 0.25s ease-in;
 
-  &.active:not(.initial) {
+  &.active {
     animation: shake 0.5s infinite;
   }
 
