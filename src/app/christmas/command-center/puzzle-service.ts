@@ -15,10 +15,18 @@ export enum PuzzleId {
   Memory = 'memory',
   Drum = 'drum',
   UnstablePath = 'unstable-path',
+  Songs = 'songs',
   Todo = 'todo',
 }
 
 const initialPuzzles: Puzzle[] = [
+  {
+    id: PuzzleId.Songs,
+    image: 'assets/christmas/song-anagram/song-puzzle-poster.jpg',
+    completed: false,
+    date: '12-12-2022',
+    path: 'christmas/command-center/puzzle/songs',
+  },
   {
     id: PuzzleId.UnstablePath,
     image: 'assets/christmas/unstable-path/indiana-jones-poster.jpg',

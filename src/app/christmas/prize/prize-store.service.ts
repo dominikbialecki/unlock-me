@@ -17,6 +17,7 @@ export enum PrizeId {
   Breakfast = 'Breakfast',
   GoneWithTheWind = 'GoneWithTheWind',
   ChooseTvSeries = 'ChooseTvSeries',
+  Theatre = 'Theatre',
 }
 
 export const initialPrizes: ReadonlyArray<Prize> = [
@@ -25,6 +26,7 @@ export const initialPrizes: ReadonlyArray<Prize> = [
   {id: PrizeId.Massage, name: 'Masaż'},
   {id: PrizeId.GoneWithTheWind, name: 'Obejrzenie "Przeminęło z wiatrem"'},
   {id: PrizeId.ChooseTvSeries, name: 'Wybór serialu'},
+  {id: PrizeId.Theatre, name: 'Pójdziemy do teatru na wybrany przez Ciebie spektakl'},
   {id: PrizeId.Bite, name: 'Ugryzienie w brzuch'},
 ].map((partial) => ({...partial, active: false}));
 

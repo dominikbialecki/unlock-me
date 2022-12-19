@@ -10,6 +10,7 @@ import {PuzzleRoutingModule} from './puzzle-routing.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { UnstablePathComponent } from './unstable-path/unstable-path.component';
+import { SongAnagramComponent } from './song-anagram/song-anagram.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { UnstablePathComponent } from './unstable-path/unstable-path.component';
     DrumPuzzleComponent,
     BatteryComponent,
     UnstablePathComponent,
+    SongAnagramComponent,
   ],
   exports: [
     PuzzlePortalComponent,

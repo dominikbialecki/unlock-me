@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: url(~/src/assets/christmas/song-anagram/song-anagram-background.jpg) no-repeat 70%;
+  background-size: cover;
+  padding: 56px 0;
+}
+
+.song {
+  display: flex;
+}
+
+.word {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: url(~/src/assets/christmas/song-anagram/jar.png) no-repeat center;
+  background-size: contain;
+  opacity: 1;
+  transition: all 0.25s ease-in;
+
+  &.used {
+    opacity: 0;
+  }
+}
+
+.refresh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    color: #222;
+    background-color: transparent;
+  }
+}
