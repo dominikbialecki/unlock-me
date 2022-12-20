@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1671576300562,
+  "timestamp": 1671576857494,
   "index": "/unlock-me/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
       },
       "urls": [
         "/unlock-me/399.8f7880042e2c9266.js",
-        "/unlock-me/843.b7ea2172f5cf2f60.js",
+        "/unlock-me/843.d677a2a6bbc6a488.js",
         "/unlock-me/favicon-16x16.png",
         "/unlock-me/favicon-32x32.png",
         "/unlock-me/favicon.ico",
@@ -20,7 +20,7 @@
         "/unlock-me/main.1d444fae2fe36850.js",
         "/unlock-me/manifest.webmanifest",
         "/unlock-me/polyfills.4c6096de66c09b0a.js",
-        "/unlock-me/runtime.baff790aff8f7a19.js",
+        "/unlock-me/runtime.69cd429097ce6b6c.js",
         "/unlock-me/styles.ce12452a8ca8f32a.css"
       ],
       "patterns": []
@@ -28,7 +28,7 @@
     {
       "name": "christmas-assets",
       "installMode": "prefetch",
-      "updateMode": "lazy",
+      "updateMode": "prefetch",
       "cacheQueryOptions": {
         "ignoreVary": true
       },
@@ -40,9 +40,9 @@
         "/unlock-me/assets/christmas/drum/drum-poster.png",
         "/unlock-me/assets/christmas/drum/lion-king-sleep.png",
         "/unlock-me/assets/christmas/drum/lion-king-wake-up.png",
-        "/unlock-me/assets/christmas/harry-potter.jpg",
         "/unlock-me/assets/christmas/harry-potter/dobby.png",
         "/unlock-me/assets/christmas/harry-potter/harry-potter-background.gif",
+        "/unlock-me/assets/christmas/harry-potter/harry-potter-poster.jpg",
         "/unlock-me/assets/christmas/harry-potter/kreacher.png",
         "/unlock-me/assets/christmas/memory/baking-sheet.png",
         "/unlock-me/assets/christmas/memory/gingerbread-man-1.png",
@@ -90,41 +90,12 @@
         "/unlock-me/stone.1c2a56e9e4895c90.png"
       ],
       "patterns": []
-    },
-    {
-      "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "lazy",
-      "cacheQueryOptions": {
-        "ignoreVary": true
-      },
-      "urls": [
-        "/unlock-me/assets/dogs/bulldog.png",
-        "/unlock-me/assets/dogs/corgi.png",
-        "/unlock-me/assets/dogs/puppy.png",
-        "/unlock-me/assets/dogs/spaniel.png",
-        "/unlock-me/assets/egypt/egypt-backgound.jpg",
-        "/unlock-me/assets/egypt/egypt-success.png",
-        "/unlock-me/assets/egypt/egypt-toggle-icon.svg",
-        "/unlock-me/assets/fonts/digital-7/digital-7.ttf",
-        "/unlock-me/assets/fonts/shadows-into-light-two/shadows-into-light-two-regular.ttf",
-        "/unlock-me/assets/home/home-background.jpg",
-        "/unlock-me/assets/home/sleeping.png",
-        "/unlock-me/assets/icons/icon-128x128.png",
-        "/unlock-me/assets/icons/icon-192x192.png",
-        "/unlock-me/assets/icons/icon-258x258.png",
-        "/unlock-me/assets/icons/icon-512x512.png",
-        "/unlock-me/assets/icons/icon-64x64.png",
-        "/unlock-me/assets/icons/icon-96x96.png",
-        "/unlock-me/assets/no-signal-tv.gif"
-      ],
-      "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
     "/unlock-me/399.8f7880042e2c9266.js": "eae8acd26bd947543297631feb1d569955275cb2",
-    "/unlock-me/843.b7ea2172f5cf2f60.js": "e7a78ec7db61d486583c0969a35240a305d9fc67",
+    "/unlock-me/843.d677a2a6bbc6a488.js": "c00332e5adaf836b5b380b9fec3d25531cfa38a9",
     "/unlock-me/assets/christmas/battle/battle-background.jpg": "5ac9187103d83de1488e913b5f245ebebce76c30",
     "/unlock-me/assets/christmas/battle/battle-poster.png": "0218ab69f1c7c000a24eec4276eaf68195d8886c",
     "/unlock-me/assets/christmas/battle/grinch.png": "d983e63f63dbea2f24bc9e22e3081745a997d3db",
@@ -132,9 +103,9 @@
     "/unlock-me/assets/christmas/drum/drum-poster.png": "9c95ba7a51d89edccaa79c37a74a98487a67aefe",
     "/unlock-me/assets/christmas/drum/lion-king-sleep.png": "4cc3d7b481ef1ed2768521c6a96a8154b82bb427",
     "/unlock-me/assets/christmas/drum/lion-king-wake-up.png": "1849f2e70f294883c132bfa99f03ff5630439d62",
-    "/unlock-me/assets/christmas/harry-potter.jpg": "b9c7bca9bad3106e7823e4c267c9ec0671d65f7b",
     "/unlock-me/assets/christmas/harry-potter/dobby.png": "4f01b40e21b86bf6203e466856721837520cd2aa",
     "/unlock-me/assets/christmas/harry-potter/harry-potter-background.gif": "8f072d6026d955be76694e72071c3a950aed7a9b",
+    "/unlock-me/assets/christmas/harry-potter/harry-potter-poster.jpg": "b9c7bca9bad3106e7823e4c267c9ec0671d65f7b",
     "/unlock-me/assets/christmas/harry-potter/kreacher.png": "9714eb7a424638ef64f5817f35453a876baa0a6e",
     "/unlock-me/assets/christmas/memory/baking-sheet.png": "0ff441e79c2df928dffb86579f60f4d420676018",
     "/unlock-me/assets/christmas/memory/gingerbread-man-1.png": "91ab8813c256183ca7f04bdf6c2ea13a3bd5620f",
@@ -151,24 +122,6 @@
     "/unlock-me/assets/christmas/unstable-path/indiana.png": "fc330e5825e3ca12312f9f845f411c37f1ff27b3",
     "/unlock-me/assets/christmas/unstable-path/lava-background.jpg": "14464a61333a873d164f7388fef0873e2eba9bc4",
     "/unlock-me/assets/christmas/unstable-path/stone.png": "d882282091bd6f18b48176e3c0403c5d3433e8f0",
-    "/unlock-me/assets/dogs/bulldog.png": "e2d03fbebc1069638baceb788e45c69b5ebdaf94",
-    "/unlock-me/assets/dogs/corgi.png": "8dac7525650d44acc6992d89524bc84ce9fbea64",
-    "/unlock-me/assets/dogs/puppy.png": "2e87f815ef27e91c666d65c775712e212f3db6ef",
-    "/unlock-me/assets/dogs/spaniel.png": "380628ae4dcaaaa658f878f7692277b230b76d82",
-    "/unlock-me/assets/egypt/egypt-backgound.jpg": "fff4d6e5c6b35e4617bd09b2ec5863bad02fa372",
-    "/unlock-me/assets/egypt/egypt-success.png": "7050d904d59b4a7f7c4a9ad58a8a771b7761793b",
-    "/unlock-me/assets/egypt/egypt-toggle-icon.svg": "9fc89c1e800e344cf385510d188e4afee1318caa",
-    "/unlock-me/assets/fonts/digital-7/digital-7.ttf": "7e1cf55ecbeaaa82465624ffb32b54e85453325c",
-    "/unlock-me/assets/fonts/shadows-into-light-two/shadows-into-light-two-regular.ttf": "c3099f67645f84c07ca0595648d78f5971f90189",
-    "/unlock-me/assets/home/home-background.jpg": "77ef3fb2deee92d31d4bc317337abfa95a6cb8c3",
-    "/unlock-me/assets/home/sleeping.png": "fb5b545a61620dce8cc82405098ff2a3251520ab",
-    "/unlock-me/assets/icons/icon-128x128.png": "80e87ab083425f48b8e0502073fcad9ff0ece02e",
-    "/unlock-me/assets/icons/icon-192x192.png": "2fea9ffbf08b38c473736eb7907d04f17569e469",
-    "/unlock-me/assets/icons/icon-258x258.png": "71df10116b4a4d48241caf1225a93996f2febcbd",
-    "/unlock-me/assets/icons/icon-512x512.png": "3f8bd03036cebf873e34b69e64b7809ef995f9d7",
-    "/unlock-me/assets/icons/icon-64x64.png": "bf9054aadf28fb6ff1b68920f4c964dae0684445",
-    "/unlock-me/assets/icons/icon-96x96.png": "5fe54c4ad5dcde32e25f14a259d4ebcfcffce226",
-    "/unlock-me/assets/no-signal-tv.gif": "84d8c29918b3ea7ce3889fcddc5584459a7f7855",
     "/unlock-me/baking-sheet.cd0424e54d0dfb14.png": "0ff441e79c2df928dffb86579f60f4d420676018",
     "/unlock-me/battle-background.4dd01c2bc7aa48ff.jpg": "5ac9187103d83de1488e913b5f245ebebce76c30",
     "/unlock-me/bulldog.fd18d731451b83a3.png": "e2d03fbebc1069638baceb788e45c69b5ebdaf94",
@@ -186,7 +139,7 @@
     "/unlock-me/grinch.db2b56d7d8cfd693.png": "d983e63f63dbea2f24bc9e22e3081745a997d3db",
     "/unlock-me/harry-potter-background.e6e3ab08d3cd5d54.gif": "8f072d6026d955be76694e72071c3a950aed7a9b",
     "/unlock-me/home-background.c2539f5baecc4e82.jpg": "77ef3fb2deee92d31d4bc317337abfa95a6cb8c3",
-    "/unlock-me/index.html": "2d89701ca1de1edb7dbe28d53954acafb7a2b52a",
+    "/unlock-me/index.html": "a7b31d9d068da7f85148a22e4700333f9b6840c0",
     "/unlock-me/indiana.1673a22b4156202e.png": "fc330e5825e3ca12312f9f845f411c37f1ff27b3",
     "/unlock-me/jar.1abb629646411e84.png": "a334cfb4d379c0e1df3f27be891a7421e67f9f7a",
     "/unlock-me/kreacher.eda96b7229622d07.png": "9714eb7a424638ef64f5817f35453a876baa0a6e",
@@ -200,7 +153,7 @@
     "/unlock-me/pin.654f5b28f09cbdaf.png": "996a217093d070c6de4ac770e9f220e0112e8478",
     "/unlock-me/polyfills.4c6096de66c09b0a.js": "7902044d4d0f0f71f3465d61064a5ccaf10cc64c",
     "/unlock-me/puppy.a14f8c0406e3b0c7.png": "2e87f815ef27e91c666d65c775712e212f3db6ef",
-    "/unlock-me/runtime.baff790aff8f7a19.js": "27dab74b61e1938e14e465eb235e4e5db5234f8e",
+    "/unlock-me/runtime.69cd429097ce6b6c.js": "7c54ebdc47ce6996df12b0c90a94b19d4849806f",
     "/unlock-me/shadows-into-light-two-regular.16c4892f97630823.ttf": "c3099f67645f84c07ca0595648d78f5971f90189",
     "/unlock-me/sleeping.666a26b62e158ac8.png": "fb5b545a61620dce8cc82405098ff2a3251520ab",
     "/unlock-me/song-anagram-background.505b7d1043b02cf2.jpg": "fbb4ecf6b507802c2a1d8c0f20036e66071b5afb",
