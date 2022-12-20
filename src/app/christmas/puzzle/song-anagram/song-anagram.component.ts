@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {SongAnagramMessageService} from './song-anagram-message.service';
-import {filter, map, takeUntil} from 'rxjs/operators';
+import {filter, map, takeUntil, tap} from 'rxjs/operators';
+import {emojiSongs} from './songs';
 
 @Component({
   selector: 'um-song-anagram',
@@ -31,11 +32,7 @@ import {filter, map, takeUntil} from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SongAnagramComponent implements OnInit, OnDestroy {
-  songs = [
-    '⭐⭐⭐⭐⭐',
-    '⭐⭐⭐',
-    '⭐⭐',
-  ];
+  songs = emojiSongs
 
   currentPuzzle$: Observable<Word[]>;
   currentSongIdx$ = new BehaviorSubject(0);
@@ -46,16 +43,16 @@ export class SongAnagramComponent implements OnInit, OnDestroy {
     this.currentPuzzle$ = this.currentSongIdx$.pipe(
       map((index) => this.songs[index]),
       filter(song => !!song),
-      map((song) => song.split('')
+      map((song) => song.split(' ')
         .map(word => new Word(word))
-        .sort(() => Math.random() - 0.5))
+        .sort(() => Math.random() - 0.5)),
     );
   }
 
   ngOnInit() {
     this.messageService.showWelcomeMessage();
     combineLatest([this.answer$, this.currentSongIdx$]).pipe(
-      filter(([answer, index]) => answer.join('') === this.songs[index]),
+      filter(([answer, index]) => answer.join(' ') === this.songs[index]),
       takeUntil(this.destroy$)
     ).subscribe(() => {
       this.onCorrectWordOrder();

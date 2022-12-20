@@ -40,7 +40,7 @@ export class UnstablePathMessageService {
       ]
     }).subscribe(() => {
       this.puzzleService.marAsCompleted(PuzzleId.UnstablePath);
-      this.prizeService.awardAndShowPrize(PrizeId.FoodDelivery);
+      this.prizeService.awardAndShowPrize(PrizeId.Sauna);
     });
   }
 }
