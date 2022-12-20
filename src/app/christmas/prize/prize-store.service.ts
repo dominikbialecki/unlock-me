@@ -22,14 +22,14 @@ export enum PrizeId {
 }
 
 export const initialPrizes: ReadonlyArray<Prize> = [
-  {id: PrizeId.FoodDelivery, name: 'Zamówimy jedzenie jakie sobie tylko życzysz'},
-  {id: PrizeId.Breakfast, name: 'Przepyszne śniadanie do łóżka'},
-  {id: PrizeId.Massage, name: 'Masaż'},
-  {id: PrizeId.GoneWithTheWind, name: 'Obejrzenie "Przeminęło z wiatrem"'},
   {id: PrizeId.ChooseTvSeries, name: 'Wybór serialu'},
-  {id: PrizeId.Theatre, name: 'Pójdziemy do teatru na wybrany przez Ciebie spektakl'},
   {id: PrizeId.Sauna, name: 'Wyjście na sauny'},
+  {id: PrizeId.Breakfast, name: 'Przepyszne śniadanie do łóżka'},
   {id: PrizeId.Bite, name: 'Ugryzienie w brzuch'},
+  {id: PrizeId.Theatre, name: 'Pójdziemy do teatru na wybrany przez Ciebie spektakl'},
+  {id: PrizeId.GoneWithTheWind, name: 'Obejrzenie "Przeminęło z wiatrem"'},
+  {id: PrizeId.FoodDelivery, name: 'Zamówimy jedzenie jakie sobie tylko życzysz'},
+  {id: PrizeId.Massage, name: 'Masaż'},
 ].map((partial) => ({...partial, active: false}));
 
 @Injectable({

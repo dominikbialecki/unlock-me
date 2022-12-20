@@ -16,12 +16,12 @@ export class CommandCenterMessageService {
     const noCompletedPuzzles = completedPuzzles.length === 0;
     const allPuzzlesCompleted = completedPuzzles.length === puzzles.length;
     const isNewPuzzleActive = dayjs().isAfter(dayjs(puzzles[0].date, 'DD-MM-YYYY'))
-    const lastPuzzleWasBattle = puzzles[0].id === PuzzleId.Battle;
+    const previousPuzzleWasBattle = puzzles[1]?.id === PuzzleId.Battle;
     if (noCompletedPuzzles) {
       this.showInitialMessage();
     } else if (allPuzzlesCompleted) {
       this.showWinMessage();
-    } else if (lastPuzzleWasBattle){
+    } else if (previousPuzzleWasBattle){
       if (isNewPuzzleActive) {
         this.showPostBattleActiveMessage();
       } else {
@@ -39,7 +39,7 @@ export class CommandCenterMessageService {
       <p>Witaj w centrum dowodzenia! Cieszę się, że tu dotarłaś. Teraz mogę Cię wtajemniczyć w naszą misję.</p>
       <p>Kiedy Grinch nam uciekł, długo nie mogliśmy go znaleźć. Po około tygodniu jeden z naszych agentów oglądając swój ulubiony film zauważył, że scenariusz się zmienił. Wygląda na to, że Grinch znalazł sposób, żeby przemieszczać się między światami! Teraz zagrożone są nie tylko nasze Święta, ale Święta we wszystkich uniwersach!</p>
       <p>Zespół naszych światowej klasy ekspertów stworzył technologię TvPortal, dzięki której mamy szansę go złapać niezależnie od tego, gdzie się ukrywa. Skorzystaj z portalu, żeby dopaść Grincha. Jeśli zdążył napsocić, musisz to odkręcić.</p>
-      <p>Los świąt wszystkich światów zależy od Ciebie!</p>
+      <p>Los Świąt wszystkich światów zależy od Ciebie!</p>
     `;
     return this.messageService.showIfNotLastSeen({
       message,

@@ -14,7 +14,7 @@ export class RelaxService {
   relaxed$ = new BehaviorSubject(false);
 
   constructor() {
-    const timer$ = timer(2 * 1000, 2 * 1000);
+    const timer$ = timer(5 * 1000, 5 * 1000);
     const orientation$ = fromEvent(window, 'deviceorientation') as Observable<Orientation>;
 
     orientation$.pipe(
@@ -26,7 +26,7 @@ export class RelaxService {
 
   private isSteady(orientations: Orientation[]): boolean {
     const [min, max] = this.minMax(orientations);
-    return [max.alpha - min.alpha, max.beta - min.beta, max.gamma - min.gamma].every(delta => delta < 10);
+    return [max.beta - min.beta, max.gamma - min.gamma].every(delta => delta < 10);
   }
 
   private minMax(orientations: Orientation[]): [Orientation, Orientation] {

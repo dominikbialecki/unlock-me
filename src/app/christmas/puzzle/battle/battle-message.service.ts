@@ -16,7 +16,7 @@ export class BattleMessageService {
 
   showWelcomeMessage(): Observable<unknown> {
     const message = `
-      <p>Tym razem go mamy! Kiedy byliśmy zajęci szukaniem Grincha po światach, ten skubaniec planował się zakraść do wioski Mikołaja płatać mu figle.</p>
+      <p>Tym razem go mamy! Kiedy byliśmy zajęci szukaniem Grincha po światach, ten skubaniec zakradł się do wioski Mikołaja płatać mu figle.</p>
       <p>Zdążył już zarazić Rudolfa katarem i zrobić dziurę w worku Mikołaja. Wygląda na to, że kompletnie się nas nie spodziewa.</p>
       <p>Lepszej szansy nie będzie. Pokaż Grinchowi gdzie jego miejsce!</p>
     `;

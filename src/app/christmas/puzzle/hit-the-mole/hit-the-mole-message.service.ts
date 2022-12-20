@@ -16,7 +16,7 @@ export class HitTheMoleMessageService {
 
   showWelcomeMessage(): Observable<unknown> {
     const message = 'Z naszych informacji wynika, że Grinch nienawidzi sierot. Szczególnie tych z blizną na czole. ' +
-      'Wysłał swoje pomioty, żeby zapsuli jednej z nich jej już i tak żałosne święta bez rodziców. ' +
+      'Wysłał swoje pomioty, żeby zepsuli jednej z nich jej już i tak żałosne święta bez rodziców. ' +
       'Zatrzymaj je, nim stanie się coś niedobrego! Żeby ułatwić Ci zadanie, wysłaliśmy też naszych ludzi do pomocy.';
     this.messageService.setMessage(message);
     return this.messageService.showMessage({
@@ -59,7 +59,7 @@ export class HitTheMoleMessageService {
       ]
     }).subscribe(() => {
         this.puzzleService.marAsCompleted(PuzzleId.HarryPotter);
-        this.prizeService.awardAndShowPrize(PrizeId.Massage);
+        this.prizeService.awardAndShowPrize(PrizeId.GoneWithTheWind);
     });
   }
 }

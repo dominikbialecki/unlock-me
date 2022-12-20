@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                       Witaj, Joanno! Widzę, że wiadomość dotarła. Całe szczęście...
                   </p>
                   <p>
-                      Zauważyliśmy wsmożoną aktywność Grincha. Nie mamy pojęcia co knuje, ale to na pewno nic
+                      Zauważyliśmy wzmożoną aktywność Grincha. Nie mamy pojęcia co knuje, ale to na pewno nic
                       dobrego! Jeśli szybko go nie powstrzymamy, Święta będą w niebezpieczeństwie... ba, cały świat
                       będzie
                       zagrożony!

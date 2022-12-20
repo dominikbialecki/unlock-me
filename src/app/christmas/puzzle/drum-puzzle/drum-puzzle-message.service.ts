@@ -16,7 +16,7 @@ export class DrumPuzzleMessageService {
 
   showWelcomeMessage(): Observable<unknown> {
     const message = `
-      <p>Tym razem Grinch zawitał na Lwią Skałę. Mufasa jak co roku miał zabrać syna by upolować antylopę na świąteczne śniadanie, ale ktoś mu dosypał proszków nasennych i za nic nie da się go dobudzić.</p>
+      <p>Tym razem Grinch zawitał na Lwią Skałę. Mufasa jak co roku miał zabrać syna by upolować świąteczną antylopę, ale ktoś mu dosypał proszków nasennych i za nic nie da się go dobudzić.</p>
       <p>Pomóż Simbie obudzić rodziców. Kto wie ile wspólnych Świąt im zostało...</p>
     `;
     return this.messageService.showIfNotLastSeen({

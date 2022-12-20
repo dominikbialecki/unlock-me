@@ -17,7 +17,7 @@ export class TransmitOnRelaxService {
   }
 
   transmit(code: number[]): Observable<unknown> {
-    const timer$ = timer(7 * 1000, 7 * 1000);
+    const timer$ = timer(20 * 1000, 20 * 1000);
     const orientation$ = fromEvent(window, 'deviceorientation') as Observable<Orientation>;
 
     return orientation$.pipe(
@@ -30,7 +30,7 @@ export class TransmitOnRelaxService {
 
   private isSteady(orientations: Orientation[]): boolean {
     const [min, max] = this.minMax(orientations);
-    return [max.alpha - min.alpha, max.beta - min.beta, max.gamma - min.gamma].every(delta => delta < 10);
+    return [max.beta - min.beta, max.gamma - min.gamma].every(delta => delta < 10);
   }
 
   private minMax(orientations: Orientation[]): [Orientation, Orientation] {

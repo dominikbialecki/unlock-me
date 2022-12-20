@@ -39,24 +39,24 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   private configs = [
     {
-      health: 30,
+      health: 50,
       healingPerSecond: () => 0,
       damagePolicy: () => 1,
     },
     {
-      health: 60,
-      healingPerSecond: () => 4,
+      health: 100,
+      healingPerSecond: () => 6,
       damagePolicy: () => 3,
       grinchClassName$: of('left-and-right')
     },
     {
-      health: 100,
-      healingPerSecond: () => 5,
+      health: 200,
+      healingPerSecond: () => 6,
       damagePolicy: () => 4,
       grinchClassName$: of('random-running')
     },
     {
-      health: 100,
+      health: 200,
       healingPerSecond: () => Math.floor(Math.random() * 20) + 10,
       damagePolicy: () => {
         const isCharging = this.batteryService.isCharging$.getValue();
@@ -65,11 +65,12 @@ export class BattleComponent implements OnInit, OnDestroy {
       grinchClassName$: of('random-running')
     },
     {
-      health: 100,
+      health: 200,
       healingPerSecond: () => Math.floor(Math.random() * 20) + 10,
       damagePolicy: () => {
-        const isCharging = !this.batteryService.isCharging$.getValue();
-        return isCharging ? 14 : 4;
+        const isNotCharging = !this.batteryService.isCharging$.getValue();
+        const isRelaxed = this.relaxService.relaxed$.getValue();
+        return isNotCharging && isRelaxed ? 14 : 4;
       },
       grinchClassName$: combineLatest([this.batteryService.isCharging$, this.relaxService.relaxed$]).pipe(
         map(([charging, relaxed]) => `random-running ${relaxed ? '' : 'stressed'} ${charging ? 'overcharged' : ''}`)
