@@ -77,6 +77,7 @@ export class WordPuzzle {
   }
 
   reset() {
+    this.answers = [];
     this.letters.forEach(letter => letter.reset());
   }
 
