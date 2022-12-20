@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { UnstablePathComponent } from './unstable-path/unstable-path.component';
 import { SongAnagramComponent } from './song-anagram/song-anagram.component';
+import { BattleComponent } from './battle/battle.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SongAnagramComponent } from './song-anagram/song-anagram.component';
     BatteryComponent,
     UnstablePathComponent,
     SongAnagramComponent,
+    BattleComponent,
   ],
   exports: [
     PuzzlePortalComponent,

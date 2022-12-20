@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {from, fromEvent, Observable} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import {Injectable, OnDestroy} from '@angular/core';
+import {BehaviorSubject, from, fromEvent, Observable} from 'rxjs';
+import {map, startWith, switchMap} from 'rxjs/operators';
 import {EventTargetLike} from 'rxjs/internal-compatibility';
 
 type BatteryManager = EventTargetLike<unknown> & {
@@ -9,7 +9,19 @@ type BatteryManager = EventTargetLike<unknown> & {
 };
 
 @Injectable({providedIn: 'root'})
-export class BatteryService {
+export class BatteryService implements OnDestroy {
+
+  isCharging$ = new BehaviorSubject(false);
+
+  constructor() {
+    this.getBattery().pipe(
+      switchMap(battery => fromEvent(battery, 'chargingchange').pipe(
+          map(() => battery.charging),
+          startWith(battery.charging),
+        )
+      )
+    ).subscribe(this.isCharging$);
+  }
 
   getBatteryLevel(): Observable<number> {
     return this.getBattery().pipe(
@@ -22,4 +34,7 @@ export class BatteryService {
     return from((navigator as any).getBattery() as Promise<BatteryManager>);
   }
 
+  ngOnDestroy(): void {
+    this.isCharging$.complete();
+  }
 }

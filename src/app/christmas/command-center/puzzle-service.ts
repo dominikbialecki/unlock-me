@@ -16,51 +16,51 @@ export enum PuzzleId {
   Drum = 'drum',
   UnstablePath = 'unstable-path',
   Songs = 'songs',
-  Todo = 'todo',
+  Battle = 'Battle',
 }
 
 const initialPuzzles: Puzzle[] = [
   {
-    id: PuzzleId.Songs,
-    image: 'assets/christmas/song-anagram/song-puzzle-poster.jpg',
-    completed: false,
-    date: '12-12-2022',
-    path: 'christmas/command-center/puzzle/songs',
-  },
-  {
-    id: PuzzleId.UnstablePath,
-    image: 'assets/christmas/unstable-path/indiana-jones-poster.jpg',
-    completed: false,
-    date: '12-12-2022',
-    path: 'christmas/command-center/puzzle/unstable-path',
-  },
-  {
     id: PuzzleId.HarryPotter,
     image: 'assets/christmas/harry-potter.jpg',
     completed: false,
-    date: '12-12-2022',
+    date: '21-12-2022',
     path: 'christmas/command-center/puzzle/hit-the-mole'
   },
   {
     id: PuzzleId.Memory,
     image: 'assets/christmas/memory/memory-poster.jpg',
     completed: false,
-    date: '12-12-2022',
+    date: '22-12-2022',
     path: 'christmas/command-center/puzzle/memory'
+  },
+  {
+    id: PuzzleId.UnstablePath,
+    image: 'assets/christmas/unstable-path/indiana-jones-poster.jpg',
+    completed: false,
+    date: '23-12-2022',
+    path: 'christmas/command-center/puzzle/unstable-path',
+  },
+  {
+    id: PuzzleId.Battle,
+    image: 'assets/christmas/battle-poster.png',
+    completed: false,
+    date: '24-12-2022',
+    path: 'christmas/command-center/puzzle/battle'
   },
   {
     id: PuzzleId.Drum,
     image: 'assets/christmas/drum/drum-poster.png',
     completed: false,
-    date: '12-12-2022',
+    date: '25-12-2022',
     path: 'christmas/command-center/puzzle/drum'
   },
   {
-    id: PuzzleId.Todo,
-    image: 'assets/christmas/harry-potter.jpg',
+    id: PuzzleId.Songs,
+    image: 'assets/christmas/song-anagram/song-puzzle-poster.jpg',
     completed: false,
-    date: '12-12-2022',
-    path: 'christmas/command-center/puzzle/third'
+    date: '26-12-2022',
+    path: 'christmas/command-center/puzzle/songs',
   },
 ];
 

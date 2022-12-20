@@ -9,11 +9,11 @@ export class ExplosionDirective {
 
   @Input('umExplosion') emoji: string = '⭐';
   @Input() explodeFromCenter: boolean = false;
+  @Input() explodeRadius = 50;
+  @Input() explodePoints = 5;
 
   private options = {
-    radius: 50, // explosion size
-    variation: 10, // randomized variation on each point's angle
-    points: 5, // number of points in explosion
+    variation: 30, // randomized variation on each point's angle
   };
 
   constructor(private elementRef: ElementRef) {
@@ -30,15 +30,15 @@ export class ExplosionDirective {
     }
     this.elementRef.nativeElement.appendChild(container);
 
-    for (let i = 0; i < options.points; i++) {
-      const referenceAngle = (360 / options.points) * (i + 1);
-      const maxAngle = referenceAngle + options.variation;
-      const minAngle = referenceAngle - options.variation;
+    for (let i = 0; i < this.explodePoints; i++) {
+      const referenceAngle = (360 / this.explodePoints) * (i + 1);
+      const maxAngle = referenceAngle + Math.random() * options.variation;
+      const minAngle = referenceAngle - Math.random() *  options.variation;
 
       const angle = this.randomAngleBetween(minAngle, maxAngle);
 
-      const x = Math.cos(angle) * options.radius;
-      const y = Math.sin(angle) * options.radius;
+      const x = Math.cos(angle) * this.explodeRadius;
+      const y = Math.sin(angle) * this.explodeRadius;
       const popup = document.createElement('div');
       popup.textContent = this.emoji;
       popup.classList.add('particle');

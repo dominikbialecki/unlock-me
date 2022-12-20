@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {MessageService} from '../message/message-service';
-import {Puzzle} from './puzzle-service';
+import {Puzzle, PuzzleId} from './puzzle-service';
 import * as dayjs from 'dayjs';
 
 @Injectable({providedIn: 'root'})
@@ -16,10 +16,17 @@ export class CommandCenterMessageService {
     const noCompletedPuzzles = completedPuzzles.length === 0;
     const allPuzzlesCompleted = completedPuzzles.length === puzzles.length;
     const isNewPuzzleActive = dayjs().isAfter(dayjs(puzzles[0].date, 'DD-MM-YYYY'))
+    const lastPuzzleWasBattle = puzzles[0].id === PuzzleId.Battle;
     if (noCompletedPuzzles) {
       this.showInitialMessage();
     } else if (allPuzzlesCompleted) {
       this.showWinMessage();
+    } else if (lastPuzzleWasBattle){
+      if (isNewPuzzleActive) {
+        this.showPostBattleActiveMessage();
+      } else {
+        this.showPostBattleInactiveMessage();
+      }
     } else if (isNewPuzzleActive) {
       this.showNextGameMessage();
     } else {
@@ -77,6 +84,33 @@ export class CommandCenterMessageService {
     return this.messageService.showIfNotLastSeen({
       message,
       actions: [
+      ]
+    });
+  }
+
+  private showPostBattleActiveMessage() {
+    const message = `
+      <p>JAK DO TEGO MOGŁO DOJŚĆ?!</p>
+      <p>Co za niedopatrzenie, co za niedopatrzenie... Kiedy furgonetka dojechała do więzienia, w środku znaleźliśmy jedynie pusty worek! To wielka plama na honorze agencji. Nikt nie wie jak mogło do tego dojść.</p>
+      <p>Jako, że Święta trwają w najlepsze, podejrzewamy, że Grinch zamierza dalej psocić. Musisz go powstrzymać!</p>
+    `;
+    return this.messageService.showIfNotLastSeen({
+      message,
+      actions: [
+        {text: 'Nikt nie będzie niszczyć Świąt na mojej warcie!'},
+      ]
+    });
+  }
+
+  private showPostBattleInactiveMessage() {
+    const message = `
+      <p>Co za świetna robota! Nie mogę wyjść z dumy. Grinch jedzie już w worku prosto do aresztu.</p>
+      <p>Spocznij agencie, to już koniec przygód.</p>
+    `;
+    return this.messageService.showIfNotLastSeen({
+      message,
+      actions: [
+        {text: 'Zrozumiano. Wesołych Świąt!'},
       ]
     });
   }

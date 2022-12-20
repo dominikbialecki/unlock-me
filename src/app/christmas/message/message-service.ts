@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {MessageDialogComponent, MessageDialogData} from './message-dialog/message-dialog.component';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 export type MessageDialogConfig = Omit<MessageDialogData, 'message'>;
 
@@ -28,6 +28,8 @@ export class MessageService {
     if (this.message !== config.message) {
       this.setMessage(config.message);
       return this.showMessage(config);
+    } else {
+      return of(undefined)
     }
   }
 }
