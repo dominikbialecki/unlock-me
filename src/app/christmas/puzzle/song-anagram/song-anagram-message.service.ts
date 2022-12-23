@@ -18,7 +18,7 @@ export class SongAnagramMessageService {
     const message = `
       <p>Według starożytnej tradycji wykonawca najlepszego przedstawienia świątecznego zostaje zaproszony na Olimp, by pokazać je samym bogom. To jedyna okazja, by Hercules spędził czas z rodzicami.</p>
       <p>Wszystko szło doskonale, układ taneczny był już doszlifowany... do momentu aż ktoś pomieszał kompletnie tekst! Podejrzewamy, że Grinch namówił na ten paskudny gest Hadesa.</p>
-      <p>Pomóż Herculesowi przygotować występ, by mógł zobaczyć rodziców ten jeden kolejny raz.</p>
+      <p>Pomóż Herculesowi przygotować występ wskazując odpowiednią kolejność dzbanów, by mógł zobaczyć rodziców ten jeden kolejny raz.</p>
     `;
     return this.messageService.showIfNotLastSeen({
       message,

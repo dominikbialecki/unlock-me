@@ -18,7 +18,8 @@ export class MemoryMessageService {
   showWelcomeMessage(): Observable<unknown> {
     const message = `
       <p>O tej porze roku Kevin może się z czystym sumieniem objadać pysznymi pierniczkami. Jest tylko jeden problem...</p>
-      <p>Wygląda na to, że ktoś kolaborował z Grinchem i dosypał coś do ciasteczek! Nie możemy dopuścić, by Kevin się zatruł.</p>
+      <p>Wygląda na to, że ktoś kolaborował z Grinchem i dosypał coś do ciasteczek!</p>
+      <p>Dowiedź się, kto maczał w tym palce i niedopuść, żeby Kevin się zatruł!</p>
     `;
     return this.messageService.showIfNotLastSeen({
       message,

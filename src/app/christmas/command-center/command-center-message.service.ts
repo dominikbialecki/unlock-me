@@ -16,17 +16,17 @@ export class CommandCenterMessageService {
     const noCompletedPuzzles = completedPuzzles.length === 0;
     const allPuzzlesCompleted = completedPuzzles.length === puzzles.length;
     const isNewPuzzleActive = dayjs().isAfter(dayjs(puzzles[0].date, 'DD-MM-YYYY'))
-    const previousPuzzleWasBattle = puzzles[1]?.id === PuzzleId.Battle;
+    // const previousPuzzleWasBattle = puzzles[1]?.id === PuzzleId.Battle;
     if (noCompletedPuzzles) {
       this.showInitialMessage();
     } else if (allPuzzlesCompleted) {
       this.showWinMessage();
-    } else if (previousPuzzleWasBattle){
-      if (isNewPuzzleActive) {
-        this.showPostBattleActiveMessage();
-      } else {
-        this.showPostBattleInactiveMessage();
-      }
+    // } else if (previousPuzzleWasBattle){
+    //   if (isNewPuzzleActive) {
+    //     this.showPostBattleActiveMessage();
+    //   } else {
+    //     this.showPostBattleInactiveMessage();
+    //   }
     } else if (isNewPuzzleActive) {
       this.showNextGameMessage();
     } else {

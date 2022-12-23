@@ -92,8 +92,8 @@ export class HitTheMoleComponent implements OnInit, OnDestroy {
   private currentGameIndex = 0;
   private games: HitTheMoleConfig[] = [
     {newMoleInterval: 1000, lifespan: 900, quantity: 10},
-    {newMoleInterval: 800, lifespan: 700, quantity: 12},
-    {newMoleInterval: 700, lifespan: 650, quantity: 14},
+    {newMoleInterval: 900, lifespan: 850, quantity: 12},
+    {newMoleInterval: 800, lifespan: 700, quantity: 14},
   ];
 
   start() {

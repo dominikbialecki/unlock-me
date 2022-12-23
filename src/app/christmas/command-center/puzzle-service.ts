@@ -42,11 +42,11 @@ const initialPuzzles: Puzzle[] = [
     path: 'christmas/command-center/puzzle/drum'
   },
   {
-    id: PuzzleId.Battle,
-    image: 'assets/christmas/battle/battle-poster.png',
+    id: PuzzleId.HarryPotter,
+    image: 'assets/christmas/harry-potter/harry-potter-poster.jpg',
     completed: false,
     date: '24-12-2022',
-    path: 'christmas/command-center/puzzle/battle'
+    path: 'christmas/command-center/puzzle/hit-the-mole'
   },
   {
     id: PuzzleId.Songs,
@@ -56,11 +56,11 @@ const initialPuzzles: Puzzle[] = [
     path: 'christmas/command-center/puzzle/songs',
   },
   {
-    id: PuzzleId.HarryPotter,
-    image: 'assets/christmas/harry-potter/harry-potter-poster.jpg',
+    id: PuzzleId.Battle,
+    image: 'assets/christmas/battle/battle-poster.png',
     completed: false,
     date: '26-12-2022',
-    path: 'christmas/command-center/puzzle/hit-the-mole'
+    path: 'christmas/command-center/puzzle/battle'
   },
 ];
 

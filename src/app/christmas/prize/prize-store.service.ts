@@ -13,6 +13,7 @@ export interface Prize {
 export enum PrizeId {
   Bite = 'Bite',
   Massage = 'Massage',
+  HarryPotter = 'HarryPotter',
   FoodDelivery = 'FoodDelivery',
   Breakfast = 'Breakfast',
   GoneWithTheWind = 'GoneWithTheWind',
@@ -24,12 +25,13 @@ export enum PrizeId {
 export const initialPrizes: ReadonlyArray<Prize> = [
   {id: PrizeId.ChooseTvSeries, name: 'Wybór serialu'},
   {id: PrizeId.Sauna, name: 'Wyjście na sauny'},
-  {id: PrizeId.Breakfast, name: 'Przepyszne śniadanie do łóżka'},
+  {id: PrizeId.HarryPotter, name: 'Obejrzymy Harrego Pottera'},
   {id: PrizeId.Bite, name: 'Ugryzienie w brzuch'},
   {id: PrizeId.Theatre, name: 'Pójdziemy do teatru na wybrany przez Ciebie spektakl'},
   {id: PrizeId.GoneWithTheWind, name: 'Obejrzenie "Przeminęło z wiatrem"'},
   {id: PrizeId.FoodDelivery, name: 'Zamówimy jedzenie jakie sobie tylko życzysz'},
   {id: PrizeId.Massage, name: 'Masaż'},
+  {id: PrizeId.Breakfast, name: 'Przepyszne śniadanie do łóżka'},
 ].map((partial) => ({...partial, active: false}));
 
 @Injectable({
