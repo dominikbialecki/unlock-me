@@ -30,7 +30,7 @@ import {BehaviorSubject} from 'rxjs';
 export class MemoryComponent implements OnInit {
 
   showRefillText$ = new BehaviorSubject(false);
-  private readonly password = 'PRIZON MIKE';
+  private readonly password = 'PRISON MIKE';
   wordPuzzles: WordPuzzle[] = [];
 
   constructor(private messageService: MemoryMessageService) {

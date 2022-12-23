@@ -4,7 +4,6 @@ import {PrizeService} from '../../prize/prize.service';
 import {Observable} from 'rxjs';
 import {PrizeId} from '../../prize/prize-store.service';
 import {PuzzleId, PuzzleService} from '../../command-center/puzzle-service';
-import {I} from '@angular/cdk/keycodes';
 
 @Injectable({providedIn: 'root'})
 export class MemoryMessageService {
@@ -19,7 +18,8 @@ export class MemoryMessageService {
     const message = `
       <p>O tej porze roku Kevin może się z czystym sumieniem objadać pysznymi pierniczkami. Jest tylko jeden problem...</p>
       <p>Wygląda na to, że ktoś kolaborował z Grinchem i dosypał coś do ciasteczek!</p>
-      <p>Dowiedź się, kto maczał w tym palce i niedopuść, żeby Kevin się zatruł!</p>
+      <p>Tożsamość kolaboarnta ukryta została w ciasteczkach bez domieszki. Dowiedź się, kto maczał w tym palce i nie dopuść, by Kevin się zatruł!</p>
+      <p>I jeszcze jedno. Jeśli nie będziesz mogła poradzić sobie z zadaniem, wróć do centrum dowodzenia i wykonaj ponowny skok.</p>
     `;
     return this.messageService.showIfNotLastSeen({
       message,
