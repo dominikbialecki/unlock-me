@@ -75,7 +75,9 @@ export class DrumPuzzleComponent implements OnInit, OnDestroy {
       console.log('valid:', valid);
       this.valid = valid;
       this.changeDetector.detectChanges();
-      setTimeout(() => this.messageService.showSuccessMessage(), 3000);
+      if (valid) {
+        setTimeout(() => this.messageService.showSuccessMessage(), 3000);
+      }
     });
   }
 }
