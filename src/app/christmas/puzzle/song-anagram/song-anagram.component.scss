@@ -1,0 +1,47 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: url(~/src/assets/christmas/song-anagram/song-anagram-background.jpg) no-repeat 70%;
+  background-size: cover;
+  padding: 56px 0;
+}
+$word-size: 20vmin;
+
+.song {
+  // grid of three equal columns
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, $word-size);
+  grid-gap: 16px;
+  align-items: center;
+  justify-items: center;
+  font-size: 0.25 * $word-size;
+}
+
+.word {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $word-size;
+  height: $word-size;
+  background: url(~/src/assets/christmas/song-anagram/jar.png) no-repeat center;
+  background-size: contain;
+  opacity: 1;
+  transition: all 0.25s ease-in;
+
+  &.used {
+    opacity: 0;
+  }
+}
+
+.refresh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    color: #222;
+    background-color: transparent;
+  }
+}

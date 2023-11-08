@@ -8,6 +8,8 @@
       "resources": {
         "files": [
           "/favicon.ico",
+          "/favicon-16x16.png",
+          "/favicon-32x32.png",
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
@@ -16,13 +18,11 @@
       }
     },
     {
-      "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
+      "name": "christmas-assets",
+      "installMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/assets/christmas/**/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
     }

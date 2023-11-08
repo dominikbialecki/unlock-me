@@ -1,0 +1,167 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 56px 0;
+  justify-content: space-between;
+  align-items: center;
+  background: url(~/src/assets/christmas/battle/battle-background.jpg) no-repeat center;
+  background-size: cover;
+  background-position: 70%;
+  overflow: hidden;
+
+  ::ng-deep {
+    .particle {
+      color: red;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  .grinch-wrapper {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// credits https://codepen.io/alvarotrigo/pen/vYeNpjj
+
+.health-bar__container {
+  width: 80%;
+  height: 1.5rem;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s;
+  will-change: transform;
+  box-shadow: 0 0 5px #ffdf42;
+  background-color: #d5d5d5;
+}
+
+.health-bar__container.low-health {
+
+  box-shadow: 0 0 5px #850202;
+
+  .health-bar {
+    background-color: #850202;
+  }
+
+  .health-bar__text {
+    color: #850202;
+  }
+}
+
+.health-bar {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background-color: #6e971f;
+  top:0;
+  bottom: 0;
+  left: 0%;
+  border-radius: inherit;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  color: white;
+  font-family: sans-serif;
+}
+
+.health-bar__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  color: #ffdf42;
+  font-size: 0.9em;
+  //font-family: "digital-7", Arial, Helvetica, sans-serif;
+}
+
+.grinch {
+  height: 40vh;
+  width: 30vh;
+  background: url(~/src/assets/christmas/battle/grinch.png) no-repeat center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: all 0.25s ease-in;
+
+  &.left-and-right {
+    animation: left-and-right 1s ease-in-out infinite;
+  }
+  &.random-running {
+    animation: random-running 3s ease-in-out infinite;
+  }
+  &.overcharged {
+    height: 12vh;
+    width: 8vh;
+  }
+  &.stressed {
+    animation-duration: 1.5s;
+  }
+  &.dead {
+    opacity: 0;
+  }
+}
+
+.hit-button {
+  opacity: 0;
+  height: 70%;
+  width: 70%
+}
+
+@keyframes left-and-right {
+  0% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(-20vh);
+  }
+  66% {
+    transform: translateX(15vh);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes random-running {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-20vh, -5vh)
+  }
+  20% {
+    transform: translate(-20vh, -15vh)
+  }
+  30% {
+    transform: translate(10vh, 0vh)
+  }
+  40% {
+    transform: translate(10vh, 13vh)
+  }
+  50% {
+    transform: translate(-10vh, 25vh)
+  }
+  60% {
+    transform: translate(-15vh, -10vh)
+  }
+  70% {
+    transform: translate(0vh, -20vh)
+  }
+  80% {
+    transform: translate(10vh, -10vh)
+  }
+  90% {
+    transform: translate(-10vh, -10vh)
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

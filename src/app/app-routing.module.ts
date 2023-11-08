@@ -1,26 +1,37 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {EgyptComponent} from './puzzle/egypt/egypt.component';
-import {DeadlyWavesComponent} from './puzzle/deadly-waves/deadly-waves.component';
-import {ArtifactComponent} from './puzzle/artifact/artifact.component';
-import {RelaxComponent} from './puzzle/relax/relax.component';
-import {HomeComponent} from './puzzle/home/home.component';
-import {HackerComponent} from './puzzle/hacker/hacker.component';
-import {WeddingComponent} from './puzzle/wedding/wedding.component';
+import {MissionStartComponent} from './christmas/mission-start/mission-start.component';
+import {
+  MissionStartConfirmComponent
+} from './christmas/mission-start/mission-start-confirm/mission-start-confirm.component';
+import {
+  MissionStartDeclineComponent
+} from './christmas/mission-start/mission-start-decline/mission-start-decline.component';
+import {MissionStartGuard} from './christmas/mission-start/mission-start.guard';
+import {CommandCenterComponent} from './christmas/command-center/command-center.component';
+import {HitTheMoleComponent} from './christmas/puzzle/hit-the-mole/hit-the-mole.component';
+import {MemoryComponent} from './christmas/puzzle/memory/memory.component';
+import {DrumPuzzleComponent} from './christmas/puzzle/drum-puzzle/drum-puzzle.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 
 export const routes: Routes = [
-  {path: 'artifact', component: ArtifactComponent},
-  {path: 'egypt', component: EgyptComponent},
-  {path: 'deadly-waves', component: DeadlyWavesComponent},
-  {path: 'relax', component: RelaxComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'hacker', component: HackerComponent},
-  {path: 'wedding', component: WeddingComponent},
+  {path: '', redirectTo: 'christmas', pathMatch: 'full'},
+  {
+    path: 'christmas', children: [
+      {path: '', redirectTo: 'mission-start', pathMatch: 'full'},
+      {path: 'mission-start', component: MissionStartComponent, canActivate: [MissionStartGuard]},
+      {path: 'mission-start/confirm', component: MissionStartConfirmComponent},
+      {path: 'mission-start/decline', component: MissionStartDeclineComponent},
+      {path: 'command-center', loadChildren: () => import('./christmas/command-center/command-center.routes')},
+    ]
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

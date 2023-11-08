@@ -31,10 +31,16 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/favicon-16x16.png",
+              "src/favicon-32x32.png",
               "src/assets",
               "src/manifest.webmanifest"
             ],
+            "allowedCommonJsDependencies": [
+              "dayjs"
+            ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": [],
@@ -104,10 +110,13 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
+              "src/favicon-16x16.png",
+              "src/favicon-32x32.png",
               "src/assets",
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -124,6 +133,9 @@
               "devServerTarget": "unlock-me:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

@@ -1,0 +1,62 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url('../../../../assets/egypt/egypt-backgound.jpg') center;
+  background-size: cover;
+
+
+  .artifact-wrapper {
+    border-radius: 50%;
+    padding: 25px;
+  }
+
+  .artifact-wrapper:not(.success) {
+    animation: neon 1.5s ease-in-out infinite alternate;
+  }
+
+  .artifact-wrapper.charging {
+    animation: neon-charging 1.5s ease-in-out infinite alternate;
+  }
+
+  .artifact-wrapper.charged {
+    animation: neon-success 1.5s ease-in-out infinite alternate;
+  }
+
+  .artifact {
+    width: 300px;
+    height: 300px;
+  }
+
+  um-next-card {
+    margin: 2rem;
+    position: absolute;
+    bottom: 15%;
+  }
+}
+
+
+@mixin neon($color) {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px $color, 0 0 70px $color, 0 0 80px $color, 0 0 100px $color, 0 0 150px $color;
+  }
+  to {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px $color, 0 0 35px $color, 0 0 40px $color, 0 0 50px $color, 0 0 75px $color;
+  }
+}
+
+@keyframes neon-red {
+  @include neon(#ff3400);
+}
+
+@keyframes neon-charging {
+  @include neon(#FFCDB903);
+}
+
+
+@keyframes neon-success {
+  @include neon(#00ff1f);
+}

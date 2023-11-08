@@ -2,10 +2,88 @@
 
 html, body {
   height: 100%;
-  margin: 0;
-  color: #222;
+  margin: 0;font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #111;
+  background-color: #222;
 }
 
-html, html * {
-  font-family: 'Roboto', sans-serif;
+.ui-button {
+  margin: 0.5rem 0.5rem;
+  text-align: center;
+  padding: 0.5rem 2.5rem;
+  text-transform: uppercase;
+  display: block;
+  border: none;
+  appearance: none;
+  font-weight: 500;
+  white-space: pre-wrap;
+  outline: none;
+  background-color: white;
+
+  &:active, &:hover {
+    background: #eeeeeeaa;
+  }
+}
+
+.dialog {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  &-text {
+    width: 100%;
+  }
+
+  &-answers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    widows: 100%;
+  }
+}
+
+@font-face {
+  font-family: "digital-7";
+  src: local("digital-7"), url(./assets/fonts/digital-7/digital-7.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "shadows-into-light";
+  src: local("shadows-into-light"), url(./assets/fonts/shadows-into-light-two/shadows-into-light-two-regular.ttf) format("truetype");
+}
+
+[umExplosion] {
+  // explosion container
+  .particles-container {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: scale(3), translate(-50%, -50%);
+    visibility: visible;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .particle {
+    position: absolute;
+    animation: explode 0.5s reverse linear;
+    transform: translate(-50%, -50%);
+    font-size: 0.75rem;
+  }
+
+  @keyframes explode {
+    100% {
+      top: 50%;
+      left: 50%;
+      transform: scale(3), translate(-50%, -50%);
+    }
+  }
+
+}
+
+button.mat-mdc-mini-fab.transparent-bg {
+  background-color: #ffffffcc;
 }

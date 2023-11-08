@@ -1,0 +1,17 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
+  grid-row-gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url(~/src/assets/christmas/command-center/command-center-background.png) no-repeat center;
+  background-size: cover;
+  padding-top: 35%;
+  padding-bottom: 2rem;
+}
+
+um-puzzle-portal {
+ height: 100%;
+}
