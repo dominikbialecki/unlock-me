@@ -8,7 +8,8 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
     </p>
   `,
   styleUrls: ['./wedding.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class WeddingComponent implements OnInit {
 

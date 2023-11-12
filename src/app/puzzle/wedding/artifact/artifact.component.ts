@@ -2,6 +2,8 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {from, fromEvent, Observable} from 'rxjs';
 import {debounceTime, filter, map, startWith, switchMap} from 'rxjs/operators';
 import {EventTargetLike} from 'rxjs/internal-compatibility';
+import {NextCardComponent} from '../../../ui-components/next-card/next-card.component';
+import {AsyncPipe, NgIf} from '@angular/common';
 
 type BatteryManager = EventTargetLike<unknown> & {
   charging: boolean;
@@ -29,7 +31,9 @@ type BatteryManager = EventTargetLike<unknown> & {
     </um-next-card>
   `,
   styleUrls: ['./artifact.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NextCardComponent, AsyncPipe]
 })
 export class ArtifactComponent implements OnInit {
 
@@ -46,8 +50,8 @@ export class ArtifactComponent implements OnInit {
     const battery$ = from(navigator.getBattery() as Promise<BatteryManager>);
     this.charging$ = battery$.pipe(
       switchMap(battery => fromEvent(battery, 'chargingchange').pipe(
-        map(() => battery.charging),
-        startWith(battery.charging),
+          map(() => battery.charging),
+          startWith(battery.charging),
         )
       )
     );

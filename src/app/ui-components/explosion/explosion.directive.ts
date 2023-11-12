@@ -3,7 +3,8 @@ import {Directive, ElementRef, HostListener, Input} from '@angular/core';
 // credits https://codepen.io/jeffersonlam/pen/JmWvmw
 
 @Directive({
-  selector: '[umExplosion]'
+  selector: '[umExplosion]',
+  standalone: true
 })
 export class ExplosionDirective {
 
@@ -33,7 +34,7 @@ export class ExplosionDirective {
     for (let i = 0; i < this.explodePoints; i++) {
       const referenceAngle = (360 / this.explodePoints) * (i + 1);
       const maxAngle = referenceAngle + Math.random() * options.variation;
-      const minAngle = referenceAngle - Math.random() *  options.variation;
+      const minAngle = referenceAngle - Math.random() * options.variation;
 
       const angle = this.randomAngleBetween(minAngle, maxAngle);
 

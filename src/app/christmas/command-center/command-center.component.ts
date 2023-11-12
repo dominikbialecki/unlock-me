@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {PuzzleService} from './puzzle-service';
+import {PuzzleService} from './puzzle/puzzle-service';
 import {shareReplay, takeUntil} from 'rxjs/operators';
 import {CommonModule} from '@angular/common';
-import {PuzzleModule} from '../puzzle/puzzle.module';
 import {CommandCenterMessageService} from './command-center-message.service';
 import {Subject} from 'rxjs';
+import {PuzzlePortalComponent} from './puzzle-portal/puzzle-portal.component';
 
 @Component({
   standalone: true,
@@ -18,7 +18,7 @@ import {Subject} from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
-    PuzzleModule,
+    PuzzlePortalComponent,
   ]
 })
 export class CommandCenterComponent implements OnInit, OnDestroy {

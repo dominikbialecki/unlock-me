@@ -6,7 +6,8 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     <img class="toggle" [class.on]="value" alt="palm" src="/assets/egypt/egypt-toggle-icon.svg">
   `,
   styleUrls: ['./egypt-toggle-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class EgyptToggleButtonComponent {
 

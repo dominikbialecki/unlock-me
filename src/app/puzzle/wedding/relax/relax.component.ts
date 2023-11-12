@@ -4,6 +4,9 @@ import {takeUntil} from 'rxjs/operators';
 import {TransmitOnRelaxService} from '../../../services/transmit-on-relax.service';
 import {CodeVibrationTransmitterService} from '../../../services/code-vibration-transmitter.service';
 import {VibrationTransmitter} from '../../../services/vibration-transmitter';
+import {NextCardComponent} from '../../../ui-components/next-card/next-card.component';
+import {NumberFormComponent} from '../../../ui-components/number-form/number-form.component';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'um-relax',
@@ -24,7 +27,9 @@ import {VibrationTransmitter} from '../../../services/vibration-transmitter';
   providers: [
     TransmitOnRelaxService,
     {provide: VibrationTransmitter, useExisting: CodeVibrationTransmitterService},
-  ]
+  ],
+  standalone: true,
+  imports: [NgIf, NumberFormComponent, NextCardComponent]
 })
 export class RelaxComponent implements OnInit, OnDestroy {
 

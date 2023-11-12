@@ -1,8 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {SongAnagramMessageService} from './song-anagram-message.service';
-import {filter, map, takeUntil, tap} from 'rxjs/operators';
+import {filter, map, takeUntil} from 'rxjs/operators';
 import {emojiSongs} from './songs';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {ExplosionDirective} from '../../../ui-components/explosion/explosion.directive';
+import {AsyncPipe, NgFor, NgIf} from '@angular/common';
 
 @Component({
   selector: 'um-song-anagram',
@@ -29,10 +33,12 @@ import {emojiSongs} from './songs';
       </ng-container>
   `,
   styleUrls: ['./song-anagram.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NgFor, ExplosionDirective, MatButtonModule, MatIconModule, AsyncPipe]
 })
 export class SongAnagramComponent implements OnInit, OnDestroy {
-  songs = emojiSongs
+  songs = emojiSongs;
 
   currentPuzzle$: Observable<Word[]>;
   currentSongIdx$ = new BehaviorSubject(0);

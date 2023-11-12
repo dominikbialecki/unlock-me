@@ -8,7 +8,7 @@ export default [
     component: CommandCenterShellComponent,
     children: [
       {path: '', pathMatch: 'full', component: CommandCenterComponent},
-      {path: 'puzzle', loadChildren: () => import('../puzzle/puzzle.module').then(m => m.PuzzleModule)},
+      {path: 'puzzle', loadChildren: () => import('../puzzle/puzzle.routes').then(m => m.puzzleRoutes)},
       {path: 'prize', loadComponent: () => import('../prize/prize.component').then(m => m.PrizeComponent)},
     ]
   },

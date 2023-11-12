@@ -6,7 +6,8 @@ import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy
     <canvas width="100%" height="100%" id="canv"></canvas>
   `,
   styleUrls: ['./matrix.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class MatrixComponent implements AfterViewInit, OnDestroy {
 

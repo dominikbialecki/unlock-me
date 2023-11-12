@@ -1,18 +1,14 @@
-import {CanActivate, Router} from '@angular/router';
-import {Injectable} from '@angular/core';
+import {CanActivateFn, Router} from '@angular/router';
+import {inject} from '@angular/core';
 
-@Injectable({providedIn: 'root'})
-export class MissionStartGuard implements CanActivate {
+export const missionStartGuard: CanActivateFn = () => {
+  const router = inject(Router);
+  const isInstalledApp = matchMedia('(display-mode: standalone)').matches;
+  const isLocalhost = document.location.origin.startsWith('http://localhost');
 
-  constructor(private router: Router) {
+  if (isInstalledApp || isLocalhost) {
+    return router.navigate(['/christmas/command-center']);
+  } else {
+    return true;
   }
-
-  canActivate(): boolean | Promise<boolean> {
-    const isInstalledApp = matchMedia('(display-mode: standalone)').matches;
-    if (isInstalledApp) {
-      return this.router.navigate(['/christmas/command-center']);
-    } else {
-      return true;
-    }
-  }
-}
+};

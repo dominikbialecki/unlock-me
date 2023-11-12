@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {NoteComponent} from '../../../ui-components/note/note.component';
 
 @Component({
   selector: 'um-mission-start-confirm',
@@ -24,7 +25,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </um-note>
   `,
   styleUrls: ['./mission-start-confirm.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NoteComponent]
 })
 export class MissionStartConfirmComponent {
 

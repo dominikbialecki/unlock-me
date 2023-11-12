@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {CardComponent} from '../card/card.component';
 
 @Component({
   selector: 'um-next-card',
@@ -9,7 +10,9 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     </um-card>
   `,
   styleUrls: ['./next-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CardComponent]
 })
 export class NextCardComponent {
 }

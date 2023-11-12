@@ -1,6 +1,10 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MemoryMessageService} from './memory-message.service';
 import {BehaviorSubject} from 'rxjs';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {ExplosionDirective} from '../../../ui-components/explosion/explosion.directive';
+import {AsyncPipe, NgClass, NgFor} from '@angular/common';
 
 @Component({
   selector: 'um-memory',
@@ -25,7 +29,9 @@ import {BehaviorSubject} from 'rxjs';
     </button>
   `,
   styleUrls: ['./memory.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgFor, ExplosionDirective, NgClass, MatButtonModule, MatIconModule, AsyncPipe]
 })
 export class MemoryComponent implements OnInit {
 

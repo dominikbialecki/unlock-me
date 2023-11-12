@@ -4,6 +4,9 @@ import {filter, map, take, takeUntil} from 'rxjs/operators';
 import {BattleMessageService} from './battle-message.service';
 import {BatteryService} from '../battery/battery-service';
 import {RelaxService} from '../../../services/relax.service';
+import {MatButtonModule} from '@angular/material/button';
+import {AsyncPipe, NgClass} from '@angular/common';
+import {ExplosionDirective} from '../../../ui-components/explosion/explosion.directive';
 
 @Component({
   selector: 'um-battle',
@@ -28,7 +31,9 @@ import {RelaxService} from '../../../services/relax.service';
     </div>
   `,
   styleUrls: ['./battle.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ExplosionDirective, NgClass, MatButtonModule, AsyncPipe]
 })
 export class BattleComponent implements OnInit, OnDestroy {
 

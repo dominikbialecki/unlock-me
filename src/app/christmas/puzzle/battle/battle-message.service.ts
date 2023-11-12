@@ -3,7 +3,8 @@ import {MessageService} from '../../message/message-service';
 import {PrizeService} from '../../prize/prize.service';
 import {Observable} from 'rxjs';
 import {PrizeId} from '../../prize/prize-store.service';
-import {PuzzleId, PuzzleService} from '../../command-center/puzzle-service';
+import {PuzzleService} from '../../command-center/puzzle/puzzle-service';
+import {PuzzleId} from '../../command-center/puzzle/puzzle-id';
 
 @Injectable({providedIn: 'root'})
 export class BattleMessageService {

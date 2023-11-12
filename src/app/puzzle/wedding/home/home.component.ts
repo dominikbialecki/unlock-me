@@ -1,4 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {NextCardComponent} from '../../../ui-components/next-card/next-card.component';
+import {NumberFormComponent} from '../../../ui-components/number-form/number-form.component';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'um-home',
@@ -21,7 +24,9 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     </ng-template>
   `,
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NumberFormComponent, NextCardComponent]
 })
 export class HomeComponent {
   valid = false;

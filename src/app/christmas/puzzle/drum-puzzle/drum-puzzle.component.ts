@@ -17,7 +17,8 @@ import {DrumPuzzleMessageService} from './drum-puzzle-message.service';
   providers: [
     TransmitOnRelaxService,
     {provide: VibrationTransmitter, useExisting: RhythmVibrationTransmitterService},
-  ]
+  ],
+  standalone: true
 })
 export class DrumPuzzleComponent implements OnInit, OnDestroy {
 

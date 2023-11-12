@@ -1,6 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {PuzzleSolvedDirective} from '../../puzzle-solved.directive';
+import {EgyptToggleButtonComponent} from './egypt-toggle-button/egypt-toggle-button.component';
+import {AsyncPipe, NgFor, NgIf} from '@angular/common';
+import {CardComponent} from '../../../ui-components/card/card.component';
 
 @Component({
   selector: 'um-egypt',
@@ -18,7 +22,9 @@ import {map} from 'rxjs/operators';
     <img *ngIf="valid$ | async" class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png" alt="success"/>
   `,
   styleUrls: ['./egypt.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CardComponent, NgFor, EgyptToggleButtonComponent, NgIf, PuzzleSolvedDirective, AsyncPipe]
 })
 export class EgyptComponent {
 

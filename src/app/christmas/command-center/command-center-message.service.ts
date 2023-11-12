@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {MessageService} from '../message/message-service';
-import {Puzzle, PuzzleId} from './puzzle-service';
 import * as dayjs from 'dayjs';
+import {Puzzle} from './puzzle/puzzle';
+import {PuzzleId} from './puzzle/puzzle-id';
 
 @Injectable({providedIn: 'root'})
 export class CommandCenterMessageService {

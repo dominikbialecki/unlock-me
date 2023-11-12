@@ -1,36 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
-import {PuzzleSchedulerService} from './puzzle/puzzle-scheduler.service';
-import {Router} from '@angular/router';
+import {Component} from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'um-root',
-  styleUrls: ['./app.component.scss'],
-  template: `
+    selector: 'um-root',
+    styleUrls: ['./app.component.scss'],
+    template: `
     <router-outlet></router-outlet>
   `,
+    standalone: true,
+    imports: [RouterOutlet],
 })
-export class AppComponent implements OnInit, OnDestroy {
-
-  private destroy$ = new Subject();
-
-  constructor(private scheduler: PuzzleSchedulerService,
-              private router: Router,
-  ) {
-  }
-
-  ngOnInit() {
-    // this.scheduler.register(...puzzles);
-    // this.scheduler.currentPuzzle$
-    //   .pipe(takeUntil(this.destroy$))
-    //   .subscribe(component => {
-    //     const path = routes.find(r => r.component === component).path;
-    //     this.router.navigate([path]);
-    //   });
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+export class AppComponent {
 }

@@ -6,7 +6,8 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
     <ng-content></ng-content>
   `,
   styleUrls: ['./card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class CardComponent {
   @Input() @HostBinding('class') color: 'light' | 'dark' | 'success' = 'light';

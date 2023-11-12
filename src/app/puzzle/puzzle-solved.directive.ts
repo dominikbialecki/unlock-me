@@ -2,7 +2,8 @@ import {Directive, HostListener, Input} from '@angular/core';
 import {PuzzleSchedulerService} from './puzzle-scheduler.service';
 
 @Directive({
-  selector: '[umPuzzleSolved]'
+  selector: '[umPuzzleSolved]',
+  standalone: true
 })
 export class PuzzleSolvedDirective {
   @Input() disabled = false;

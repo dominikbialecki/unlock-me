@@ -2,6 +2,9 @@ import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/co
 import {BehaviorSubject, merge, Subject} from 'rxjs';
 import {filter, scan, switchMap, take, takeUntil} from 'rxjs/operators';
 import {UnstablePathMessageService} from './unstable-path-message.service';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {AsyncPipe, NgFor, NgIf} from '@angular/common';
 
 @Component({
   selector: 'um-unstable-path',
@@ -29,7 +32,9 @@ import {UnstablePathMessageService} from './unstable-path-message.service';
     </div>
   `,
   styleUrls: ['./unstable-path.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NgFor, MatButtonModule, MatIconModule, AsyncPipe]
 })
 export class UnstablePathComponent implements OnInit, OnDestroy {
   map: PathElement[][];

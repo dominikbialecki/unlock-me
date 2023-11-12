@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnChanges} from '@angular/core';
-import {Puzzle} from '../puzzle-service';
 import * as dayjs from 'dayjs';
 import {interval, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {AsyncPipe, NgIf} from '@angular/common';
+import {Puzzle} from '../puzzle/puzzle';
 
 @Component({
   selector: 'um-puzzle-portal',
@@ -20,7 +21,9 @@ import {Router} from '@angular/router';
     </div>
   `,
   styleUrls: ['./puzzle-portal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, AsyncPipe]
 })
 export class PuzzlePortalComponent implements OnChanges {
 

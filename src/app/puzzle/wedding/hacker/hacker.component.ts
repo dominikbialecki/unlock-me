@@ -2,6 +2,9 @@ import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/co
 import {BehaviorSubject, Subject} from 'rxjs';
 import {debounceTime, filter, first, map, takeUntil} from 'rxjs/operators';
 import {PuzzleSchedulerService} from '../../puzzle-scheduler.service';
+import {CardComponent} from '../../../ui-components/card/card.component';
+import {AsyncPipe, NgIf} from '@angular/common';
+import {MatrixComponent} from './matrix/matrix.component';
 
 @Component({
   selector: 'um-hacker',
@@ -18,7 +21,9 @@ import {PuzzleSchedulerService} from '../../puzzle-scheduler.service';
 
   `,
   styleUrls: ['./hacker.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatrixComponent, NgIf, CardComponent, AsyncPipe]
 })
 export class HackerComponent implements OnInit, OnDestroy {
 

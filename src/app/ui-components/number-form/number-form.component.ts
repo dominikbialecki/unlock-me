@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
+import {NgFor} from '@angular/common';
+import {CardComponent} from '../card/card.component';
 
 @Component({
   selector: 'um-number-form',
@@ -15,7 +17,9 @@ import {filter, map, takeUntil} from 'rxjs/operators';
     </um-card>
   `,
   styleUrls: ['./number-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CardComponent, NgFor]
 })
 export class NumberFormComponent implements OnInit, OnDestroy {
 

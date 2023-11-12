@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {NoteComponent} from '../../../ui-components/note/note.component';
 
 @Component({
   selector: 'um-mission-start-decline',
@@ -21,7 +23,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </um-note>
   `,
   styleUrls: ['./mission-start-decline.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NoteComponent, RouterLink]
 })
 export class MissionStartDeclineComponent {
 

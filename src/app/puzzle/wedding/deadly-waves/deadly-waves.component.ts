@@ -1,6 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {fromEvent, merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {CardComponent} from '../../../ui-components/card/card.component';
+import {NextCardComponent} from '../../../ui-components/next-card/next-card.component';
+import {AsyncPipe, NgIf} from '@angular/common';
 
 @Component({
   selector: 'um-deadly-waves',
@@ -22,7 +25,9 @@ import {map} from 'rxjs/operators';
     </ng-template>
   `,
   styleUrls: ['./deadly-waves.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NextCardComponent, CardComponent, AsyncPipe]
 })
 export class DeadlyWavesComponent {
   readonly offline$: Observable<boolean>;

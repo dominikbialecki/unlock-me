@@ -1,19 +1,32 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import {enableProdMode, importProvidersFrom} from '@angular/core';
+import {environment} from './environments/environment';
 import * as dayjs from 'dayjs';
 import * as customParseFormat from 'dayjs/plugin/customParseFormat';
 import * as duration from 'dayjs/plugin/duration';
+import {AppComponent} from './app/app.component';
+import {appRoutes} from './app/app.routes';
+import {provideRouter} from '@angular/router';
+import {MatDialogModule} from '@angular/material/dialog';
+import {provideAnimations} from '@angular/platform-browser/animations';
+import {provideServiceWorker} from '@angular/service-worker';
+import {bootstrapApplication} from '@angular/platform-browser';
+import {HashLocationStrategy, LocationStrategy, NgOptimizedImage} from '@angular/common';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(MatDialogModule, NgOptimizedImage),
+    provideServiceWorker('ngsw-worker.js', {enabled: environment.production}),
+    Location, {provide: LocationStrategy, useClass: HashLocationStrategy},
+    provideAnimations(),
+    provideRouter(appRoutes)
+  ]
+})
   .catch(err => console.error(err));
 
 
 dayjs.extend(customParseFormat);
-dayjs.extend(duration)
+dayjs.extend(duration);

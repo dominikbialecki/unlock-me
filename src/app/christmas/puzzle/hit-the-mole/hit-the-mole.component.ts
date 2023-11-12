@@ -2,6 +2,8 @@ import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/co
 import {BehaviorSubject, interval, Observable, of, Subject} from 'rxjs';
 import {delay, map, scan, shareReplay, startWith, take, takeLast, takeUntil} from 'rxjs/operators';
 import {HitTheMoleMessageService} from './hit-the-mole-message.service';
+import {ExplosionDirective} from '../../../ui-components/explosion/explosion.directive';
+import {AsyncPipe, NgClass, NgFor, NgIf, NgStyle} from '@angular/common';
 
 interface HitTheMoleConfig {
   newMoleInterval: number;
@@ -73,6 +75,15 @@ class Mole {
   `,
   styleUrls: ['./hit-the-mole.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgIf,
+    NgFor,
+    ExplosionDirective,
+    NgStyle,
+    NgClass,
+    AsyncPipe,
+  ],
 })
 export class HitTheMoleComponent implements OnInit, OnDestroy {
 
