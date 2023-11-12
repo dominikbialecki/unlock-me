@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 export class PrizeService {
   constructor(private prizeStore: PrizeStoreService,
               private router: Router,
-              ) {
+  ) {
   }
 
   awardAndShowPrize(prizeId: PrizeId) {

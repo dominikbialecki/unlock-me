@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {fromEvent, Observable, timer} from 'rxjs';
 import {buffer, filter, map, throttle} from 'rxjs/operators';
-import {CodeVibrationTransmitterService} from './code-vibration-transmitter.service';
 import {VibrationTransmitter} from './vibration-transmitter';
 
 interface Orientation {

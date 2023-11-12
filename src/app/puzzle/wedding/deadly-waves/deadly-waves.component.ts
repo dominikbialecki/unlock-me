@@ -8,25 +8,25 @@ import {AsyncPipe, NgIf} from '@angular/common';
 @Component({
   selector: 'um-deadly-waves',
   template: `
-    @if (offline$ | async) {
+      @if (offline$ | async) {
 
-      <um-next-card class="card">
-        Niestety, jest już za późno. Udało Ci się zniszczyć maszt, ale czujesz wyraźnie dziurę, którą fale wypaliły w korze prawej półkuli
-        mózgu. Czujesz się coraz słabiej...
-        <br/>
-        <br/>
-        Zaraz zaraz. Czy to fatamorgana?
-      </um-next-card>
-    
-} @else {
+          <um-next-card class="card">
+              Niestety, jest już za późno. Udało Ci się zniszczyć maszt, ale czujesz wyraźnie dziurę, którą fale wypaliły w korze prawej półkuli
+              mózgu. Czujesz się coraz słabiej...
+              <br/>
+              <br/>
+              Zaraz zaraz. Czy to fatamorgana?
+          </um-next-card>
 
-      <um-card class="card">
-        Jest tylko jeden sposób żeby wygrać tę wojnę. Trzeba zniszczyć maszt!!!
-      </um-card>
-    
-}
+      } @else {
 
-    
+          <um-card class="card">
+              Jest tylko jeden sposób żeby wygrać tę wojnę. Trzeba zniszczyć maszt!!!
+          </um-card>
+
+      }
+
+
   `,
   styleUrls: ['./deadly-waves.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

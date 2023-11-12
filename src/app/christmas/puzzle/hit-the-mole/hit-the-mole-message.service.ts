@@ -59,8 +59,8 @@ export class HitTheMoleMessageService {
         {text: 'Eeeekstra!!! Co to takiego?'},
       ]
     }).subscribe(() => {
-        this.puzzleService.marAsCompleted(PuzzleId.HarryPotter);
-        this.prizeService.awardAndShowPrize(PrizeId.GoneWithTheWind);
+      this.puzzleService.marAsCompleted(PuzzleId.HarryPotter);
+      this.prizeService.awardAndShowPrize(PrizeId.GoneWithTheWind);
     });
   }
 }

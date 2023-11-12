@@ -58,13 +58,13 @@
   width: 100%;
   content: "";
   background-color: #6e971f;
-  top:0;
+  top: 0;
   bottom: 0;
   left: 0%;
   border-radius: inherit;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   color: white;
   font-family: sans-serif;
 }
@@ -94,16 +94,20 @@
   &.left-and-right {
     animation: left-and-right 1s ease-in-out infinite;
   }
+
   &.random-running {
     animation: random-running 3s ease-in-out infinite;
   }
+
   &.overcharged {
     height: 12vh;
     width: 8vh;
   }
+
   &.stressed {
     animation-duration: 1.5s;
   }
+
   &.dead {
     opacity: 0;
   }

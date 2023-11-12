@@ -29,7 +29,7 @@ export class MessageService {
       this.setMessage(config.message);
       return this.showMessage(config);
     } else {
-      return of(undefined)
+      return of(undefined);
     }
   }
 }

@@ -22,7 +22,7 @@ export class PuzzleService {
       map((puzzles) => {
         const completed = puzzles.filter(puzzle => puzzle.completed);
         const nextToComplete = puzzles.find(puzzle => !puzzle.completed);
-        const availablePuzzles = [...completed]
+        const availablePuzzles = [...completed];
         if (nextToComplete) {
           availablePuzzles.push(nextToComplete);
         }

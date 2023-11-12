@@ -1,6 +1,6 @@
 import {BehaviorSubject, fromEvent, Observable, timer} from 'rxjs';
-import {buffer, distinctUntilChanged, filter, map} from 'rxjs/operators';
-import {Injectable, OnDestroy} from '@angular/core';
+import {buffer, distinctUntilChanged, map} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
 
 interface Orientation {
   alpha?: number;

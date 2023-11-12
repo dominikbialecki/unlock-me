@@ -3,7 +3,6 @@ import {Observable} from 'rxjs';
 import {MessageService} from '../message/message-service';
 import * as dayjs from 'dayjs';
 import {Puzzle} from './puzzle/puzzle';
-import {PuzzleId} from './puzzle/puzzle-id';
 
 @Injectable({providedIn: 'root'})
 export class CommandCenterMessageService {
@@ -16,18 +15,18 @@ export class CommandCenterMessageService {
     const completedPuzzles = puzzles.filter(puzzle => puzzle.completed);
     const noCompletedPuzzles = completedPuzzles.length === 0;
     const allPuzzlesCompleted = completedPuzzles.length === puzzles.length;
-    const isNewPuzzleActive = dayjs().isAfter(dayjs(puzzles[0].date, 'DD-MM-YYYY'))
+    const isNewPuzzleActive = dayjs().isAfter(dayjs(puzzles[0].date, 'DD-MM-YYYY'));
     // const previousPuzzleWasBattle = puzzles[1]?.id === PuzzleId.Battle;
     if (noCompletedPuzzles) {
       this.showInitialMessage();
     } else if (allPuzzlesCompleted) {
       this.showWinMessage();
-    // } else if (previousPuzzleWasBattle){
-    //   if (isNewPuzzleActive) {
-    //     this.showPostBattleActiveMessage();
-    //   } else {
-    //     this.showPostBattleInactiveMessage();
-    //   }
+      // } else if (previousPuzzleWasBattle){
+      //   if (isNewPuzzleActive) {
+      //     this.showPostBattleActiveMessage();
+      //   } else {
+      //     this.showPostBattleInactiveMessage();
+      //   }
     } else if (isNewPuzzleActive) {
       this.showNextGameMessage();
     } else {
@@ -84,8 +83,7 @@ export class CommandCenterMessageService {
     `;
     return this.messageService.showIfNotLastSeen({
       message,
-      actions: [
-      ]
+      actions: []
     });
   }
 

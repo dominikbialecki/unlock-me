@@ -6,7 +6,7 @@
  * Dygotał wściekle padół nasz ten
  * Wulkany miały konkurs plucia lawą dzień za dniem
  */
-const theGospelTruth = '🌎 👶 🤪 🔥 ❄️ 🥴 🧱 💩 🌋 ☀️ ☀️'
+const theGospelTruth = '🌎 👶 🤪 🔥 ❄️ 🥴 🧱 💩 🌋 ☀️ ☀️';
 
 /**
  * Chyba musi być
@@ -28,7 +28,7 @@ const goTheDistance = '🤔 📏 🔭 👀 🌱 🌲 🙌 🏡 😴';
  * Nie wariat i nie żółw, a tu... same żółtodzioby !
  * https://lyricstranslate.com
  */
-const oneLastHope = '🏳️ 👨 🐂 🤜 ❌ 🤏 🤤 🏆 ❌ 🧟 ❌ 🤪 ❌ 🐢 🐤'
+const oneLastHope = '🏳️ 👨 🐂 🤜 ❌ 🤏 🤤 🏆 ❌ 🧟 ❌ 🤪 ❌ 🐢 🐤';
 
 /**
  * Bij i siecz – ani kroku wstecz
@@ -44,4 +44,4 @@ export const emojiSongs = [
   goTheDistance,
   oneLastHope,
   zeroToHero,
-]
+];
