@@ -87,18 +87,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "unlock-me:build"
+            "buildTarget": "unlock-me:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "unlock-me:build:production"
+              "buildTarget": "unlock-me:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "unlock-me:build"
+            "buildTarget": "unlock-me:build"
           }
         },
         "test": {
