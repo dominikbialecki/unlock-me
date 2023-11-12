@@ -13,13 +13,19 @@ import {CardComponent} from '../../../ui-components/card/card.component';
       Co to? Jestem w Egipcie?! Ale to dobrze... Słyszałem, ze to tu ukryta jest słynna statuetka Anamuptatisa. Według przepowiedni ma ona
       moc zniszczyć od środka wszelkie źródła 5G, szczepionki a nawet LGBT. Muszę ją znaleźć wsród piramid...
     </um-card>
-    <div class="row" *ngFor="let row of (toggles$ | async); index as rowIdx; trackBy: trackByIndex">
-      <um-egypt-toggle-button *ngFor="let toggle of row; index as colIdx; trackBy: trackByIndex"
+    @for (row of (toggles$ | async); track trackByIndex(rowIdx, row); let rowIdx = $index) {
+  <div class="row">
+      @for (toggle of row; track trackByIndex(colIdx, toggle); let colIdx = $index) {
+  <um-egypt-toggle-button
                               [value]="toggle"
                               (click)="onToggleClick(rowIdx, colIdx)"
       ></um-egypt-toggle-button>
+}
     </div>
-    <img *ngIf="valid$ | async" class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png" alt="success"/>
+}
+    @if (valid$ | async) {
+<img class="success" umPuzzleSolved src="/assets/egypt/egypt-success.png" alt="success"/>
+}
   `,
   styleUrls: ['./egypt.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

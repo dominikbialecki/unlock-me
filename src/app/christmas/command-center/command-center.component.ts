@@ -10,9 +10,13 @@ import {PuzzlePortalComponent} from './puzzle-portal/puzzle-portal.component';
   standalone: true,
   selector: 'um-command-center',
   template: `
-    <ng-container *ngIf="puzzles$ | async as puzzles">
-      <um-puzzle-portal *ngFor="let puzzle of puzzles" [puzzle]="puzzle"></um-puzzle-portal>
-    </ng-container>
+      @if (puzzles$ | async;as puzzles) {
+
+          @for (puzzle of puzzles;track puzzle) {
+              <um-puzzle-portal [puzzle]="puzzle"></um-puzzle-portal>
+          }
+
+      }
   `,
   styleUrls: ['./command-center.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

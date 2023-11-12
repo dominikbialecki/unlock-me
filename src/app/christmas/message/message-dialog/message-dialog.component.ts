@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {CommonModule} from '@angular/common';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {NoteComponent} from '../../../ui-components/note/note.component';
 
 export interface MessageDialogData {
   message: string;
-  actions: {text: string, callback?: () => unknown}[]
+  actions: { text: string, callback?: () => unknown }[];
 }
 
 @Component({
@@ -25,9 +25,11 @@ export interface MessageDialogData {
               </div>
               <div class="dialog-answers">
                 <ul>
-                  <li *ngFor="let action of data.actions" (click)="onActionClick(action)">
+                  @for (action of data.actions; track action) {
+  <li (click)="onActionClick(action)">
                       <span [innerHTML]="action.text"></span>
                   </li>
+}
                 </ul>
               </div>
             </div>
@@ -41,7 +43,7 @@ export interface MessageDialogData {
 export class MessageDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: MessageDialogData,
               private dialog: MatDialogRef<unknown>,
-              ) {
+  ) {
   }
 
   onActionClick(action: MessageDialogData['actions'][0]): void {

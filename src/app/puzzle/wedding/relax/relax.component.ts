@@ -11,16 +11,20 @@ import {NgIf} from '@angular/common';
 @Component({
   selector: 'um-relax',
   template: `
-    <ng-container *ngIf="!valid; else validDialog">
+    @if (!valid) {
+
       <div class="sleeping"></div>
       <um-number-form class="form" [code]="code" (valid)="valid = true"></um-number-form>
-    </ng-container>
-    <ng-template #validDialog>
+    
+} @else {
+
       <um-next-card>
         *zieeeew* która to godzina? Chyba mi się przysnęło.
         Hmmmm odtwórzmy przebieg zdarzeń. Muszę tylko znaleźć zegar.
       </um-next-card>
-    </ng-template>
+    
+}
+    
   `,
   styleUrls: ['./relax.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

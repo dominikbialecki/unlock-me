@@ -11,9 +11,11 @@ import {AsyncPipe, NgFor, NgIf} from '@angular/common';
 @Component({
   selector: 'um-song-anagram',
   template: `
-      <ng-container *ngIf="currentPuzzle$ | async as song">
+      @if (currentPuzzle$ | async; as song) {
+
           <div class="song">
-              <div *ngFor="let word of song"
+              @for (word of song; track word) {
+  <div
                    class="word"
                    umExplosion="🧱"
                    [class.used]="word.isUsed"
@@ -21,6 +23,7 @@ import {AsyncPipe, NgFor, NgIf} from '@angular/common';
               >
                   <span>{{word.text}}</span>
               </div>
+}
           </div>
 
           <div class="refresh">
@@ -30,7 +33,8 @@ import {AsyncPipe, NgFor, NgIf} from '@angular/common';
                   <mat-icon>replay</mat-icon>
               </button>
           </div>
-      </ng-container>
+      
+}
   `,
   styleUrls: ['./song-anagram.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

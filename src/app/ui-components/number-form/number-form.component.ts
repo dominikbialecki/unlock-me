@@ -8,12 +8,14 @@ import {CardComponent} from '../card/card.component';
   selector: 'um-number-form',
   template: `
     <um-card class="form">
-      <input *ngFor="let c of code; index as i"
+      @for (c of code; track c; let i = $index) {
+  <input
              type="number"
              min="0"
              max="10"
              (input)="onInput(c, i)"
       >
+}
     </um-card>
   `,
   styleUrls: ['./number-form.component.scss'],

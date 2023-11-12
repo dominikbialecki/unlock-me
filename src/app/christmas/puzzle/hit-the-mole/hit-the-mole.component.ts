@@ -58,8 +58,10 @@ class Mole {
   template: `
     <div class="background"></div>
     <div class="wrapper">
-      <div class="mole-container" *ngIf="started$ | async">
-        <ng-container *ngFor="let mole of moles$ | async">
+      @if (started$ | async) {
+<div class="mole-container">
+        @for (mole of moles$ | async; track mole) {
+  
           <div umExplosion="✨"
                [explodeFromCenter]="true"
                class="mole"
@@ -69,8 +71,10 @@ class Mole {
                (click)="mole.onHit()"
           >
           </div>
-        </ng-container>
+        
+}
       </div>
+}
     </div>
   `,
   styleUrls: ['./hit-the-mole.component.scss'],

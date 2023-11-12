@@ -12,31 +12,37 @@ import {MessageService} from '../../message/message-service';
   selector: 'um-command-center-shell',
   template: `
       <div class="toolbar" [class.hidden]="hideNav">
-          <button *ngIf="isRoot$ | async"
+          @if (isRoot$ | async) {
+<button
                   class="toolbar-button"
                   mat-mini-fab
                   [routerLink]="['prize']"
           >
               <mat-icon>checklist</mat-icon>
           </button>
+}
 
-          <button *ngIf="(isPrize$ | async)"
+          @if ((isPrize$ | async)) {
+<button
                   class="toolbar-button"
                   mat-mini-fab
                   [routerLink]="['.']"
           >
               <mat-icon>tv</mat-icon>
           </button>
+}
 
           <div class="spacer"></div>
 
-          <button *ngIf="!(isPrize$ | async)"
+          @if (!(isPrize$ | async)) {
+<button
                   class="toolbar-button"
                   mat-mini-fab
                   (click)="showMessage()"
           >
               <mat-icon>chat</mat-icon>
           </button>
+}
       </div>
       <router-outlet></router-outlet>
   `,

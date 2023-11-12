@@ -14,9 +14,11 @@ import {Puzzle} from '../puzzle/puzzle';
         <div class="switch"></div>
         <img [alt]="puzzle.id" class="image" [src]="src">
         <div class="cover crt"></div>
-        <div *ngIf="!isActive" class="duration-container">
-          <span>{{ timeUntilActivation$ | async }}</span>
+        @if (!isActive) {
+        <div class="duration-container">
+                  <span>{{ timeUntilActivation$ | async }}</span>
         </div>
+        }
       </div>
     </div>
   `,

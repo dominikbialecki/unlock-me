@@ -9,19 +9,27 @@ import {AsyncPipe, NgFor, NgIf} from '@angular/common';
 @Component({
   selector: 'um-unstable-path',
   template: `
-    <div class="map" *ngIf="position$ | async as position">
-      <div class=map-row *ngFor="let row of map; let y = index"
+    @if (position$ | async; as position) {
+<div class="map">
+      @for (row of map; track row; let y = $index) {
+  <div class=map-row
       >
-        <div class="map-element"
-             *ngFor="let element of row; let x = index"
+        @for (element of row; track element; let x = $index) {
+  <div class="map-element"
+            
              (click)="onElementClick(element)"
              [class.active]="position.x === x && position.y === y"
              [class.fallen]="element.fallen$ | async"
         >
-          <div class="pawn" *ngIf="x === position.x && y === position.y"></div>
+          @if (x === position.x && y === position.y) {
+<div class="pawn"></div>
+}
         </div>
+}
       </div>
+}
     </div>
+}
 
     <div class="game-over-wrapper">
       <button class="refill-button" [style.visibility]="(gameStatus$ | async) === 'lost' ? 'visible' : 'hidden'"

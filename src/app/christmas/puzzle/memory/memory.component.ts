@@ -10,16 +10,20 @@ import {AsyncPipe, NgClass, NgFor} from '@angular/common';
   selector: 'um-memory',
   template: `
     <div class="memory-puzzle">
-      <div class="word" *ngFor="let word of wordPuzzles">
-        <div class="letter"
-             umExplosion="🍪"
-             *ngFor="let letter of word.letters"
-             [class.selected]="letter.revealed"
-             [ngClass]="letter.type"
-             (click)="onLetterClick(letter, word)">
-          {{letter.text}}
-        </div>
+      @for (word of wordPuzzles; track word) {
+      <div class="word">
+            @for (letter of word.letters; track letter) {
+      <div class="letter"
+           umExplosion="🍪"
+
+           [class.selected]="letter.revealed"
+           [ngClass]="letter.type"
+           (click)="onLetterClick(letter, word)">
+        {{letter.text}}
       </div>
+      }
+      </div>
+      }
     </div>
     <p [class.show]="showRefillText$ | async" class="show-refill-text">
       WIĘCEJ!!!

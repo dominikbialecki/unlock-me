@@ -12,23 +12,27 @@ type BatteryManager = EventTargetLike<unknown> & {
 @Component({
   selector: 'um-artifact',
   template: `
-    <div *ngIf="!charging$">
-      <p>To był błąd! To był ogromny błąd!!!</p>
-      <p>Jeśli natychmiast nie odłożę artefaktu na miejsce spadnie na mnie okropna klątwa.</p>
-    </div>
+      @if (!charging$) {
+          <div>
+              <p>To był błąd! To był ogromny błąd!!!</p>
+              <p>Jeśli natychmiast nie odłożę artefaktu na miejsce spadnie na mnie okropna klątwa.</p>
+          </div>
+      }
 
-    <div>
-      <div class="artifact-wrapper" [class.charging]="charging$ | async" [class.charged]="charged$ | async">
-        <img class="artifact"
-             alt="artifact"
-             src="/assets/egypt/egypt-success.png"/>
+      <div>
+          <div class="artifact-wrapper" [class.charging]="charging$ | async" [class.charged]="charged$ | async">
+              <img class="artifact"
+                   alt="artifact"
+                   src="/assets/egypt/egypt-success.png"/>
+          </div>
       </div>
-    </div>
 
-    <um-next-card *ngIf="charged$ | async">
-      Udało się! Zaraza zostałą doszczętnie zniszczona.
-      Pora wrócić do domu i wrócić do normalnego życia. Kiedy tylko wrócę do domu muszę...
-    </um-next-card>
+      @if (charged$ | async) {
+          <um-next-card>
+              Udało się! Zaraza zostałą doszczętnie zniszczona.
+              Pora wrócić do domu i wrócić do normalnego życia. Kiedy tylko wrócę do domu muszę...
+          </um-next-card>
+      }
   `,
   styleUrls: ['./artifact.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

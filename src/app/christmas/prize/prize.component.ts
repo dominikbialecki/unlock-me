@@ -11,14 +11,20 @@ import {bufferTime, filter, map} from 'rxjs/operators';
   template: `
     <um-note class="note">
       <span class="heading">Moje nagrody:</span>
-      <ul *ngIf="prizes$ | async as prizes">
-        <li *ngFor="let prize of prizes"
+      @if (prizes$ | async; as prizes) {
+<ul>
+        @for (prize of prizes; track prize) {
+  <li
             [class.used]="prize.usedDate"
             (click)="onPrizeClick(prize)">
           <span class="prize-name">{{prize.name}}</span>
-          <span *ngIf="prize.usedDate" class="prize-used-date">[{{prize.usedDate}}]</span>
+          @if (prize.usedDate) {
+<span class="prize-used-date">[{{prize.usedDate}}]</span>
+}
         </li>
+}
       </ul>
+}
     </um-note>
   `,
   styleUrls: ['./prize.component.scss'],

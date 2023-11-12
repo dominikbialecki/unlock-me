@@ -11,13 +11,15 @@ import {MatrixComponent} from './matrix/matrix.component';
   template: `
     <um-matrix class="matrix" [class.blur]="valid$ | async"></um-matrix>
 
-    <ng-container *ngIf="(valid$ | async) === false">
+    @if ((valid$ | async) === false) {
+
       <um-card>Mam_jeszcz3 tr0chę cza$u zanim D0minik wróc1... zd4żę sprawdz1ć co tam ost4tnio komb1nował!
         Muszę ty1ko wejść w j3go buty...
       </um-card>
 
       <input class="form" #input (input)="value$.next(input.value)"/>
-    </ng-container>
+    
+}
 
   `,
   styleUrls: ['./hacker.component.scss'],
