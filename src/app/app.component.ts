@@ -5,7 +5,7 @@ import {RouterOutlet} from '@angular/router';
   selector: 'um-root',
   styleUrls: ['./app.component.scss'],
   template: `
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
   `,
   standalone: true,
   imports: [RouterOutlet],
