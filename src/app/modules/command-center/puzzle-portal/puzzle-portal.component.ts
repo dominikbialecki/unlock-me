@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnChanges} from '@angular/core';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import {interval, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';

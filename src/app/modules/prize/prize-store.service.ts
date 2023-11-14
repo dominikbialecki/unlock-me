@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 export interface Prize {
   id: PrizeId;

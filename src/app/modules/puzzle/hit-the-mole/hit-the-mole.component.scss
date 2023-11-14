@@ -9,7 +9,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background: url(~/src/assets/christmas/harry-potter/harry-potter-background.gif) no-repeat center;
+  background: url(../../../../assets/christmas/harry-potter/harry-potter-background.gif) no-repeat center;
   opacity: 0.3;
   background-size: cover;
   z-index: 0;
@@ -45,11 +45,11 @@
 }
 
 .mole.dobby {
-  background: url(~/src/assets/christmas/harry-potter/dobby.png) no-repeat center;
+  background: url(../../../../assets/christmas/harry-potter/dobby.png) no-repeat center;
   background-size: contain;
 }
 
 .mole.kreacher {
-  background: url(~/src/assets/christmas/harry-potter/kreacher.png) no-repeat center;
+  background: url(../../../../assets/christmas/harry-potter/kreacher.png) no-repeat center;
   background-size: contain;
 }

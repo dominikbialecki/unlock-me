@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {MessageService} from '../message/message-service';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import {Puzzle} from './puzzle/puzzle';
 
 @Injectable({providedIn: 'root'})

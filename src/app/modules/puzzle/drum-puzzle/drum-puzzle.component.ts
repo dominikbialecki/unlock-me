@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnDe
 import {merge, of, Subject} from 'rxjs';
 import {TransmitOnRelaxService} from '../../../services/transmit-on-relax.service';
 import {delay, filter, finalize, map, scan, takeUntil, tap} from 'rxjs/operators';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import {VibrationTransmitter} from '../../../services/vibration-transmitter';
 import {RhythmVibrationTransmitterService} from './rhythm-vibration-transmitter.service';
 import {DrumPuzzleMessageService} from './drum-puzzle-message.service';
