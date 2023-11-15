@@ -60,13 +60,16 @@ export class MemoryComponent implements OnInit {
     setTimeout(() => {
       this.wordPuzzles.forEach(word => word.reset());
       this.showAnswerText$.next(false);
-    }, 3000);
-
+    }, 2000);
   }
 
   onLetterClick(letter: LetterToggle, word: WordPuzzle) {
     word.revealLetter(letter);
     const isSolved = this.wordPuzzles.every(word => word.isSolved());
+    const isValid = this.wordPuzzles.every(word => word.isValid());
+    if (isValid) {
+      navigator.vibrate(100);
+    }
     if (isSolved) {
       this.messageService.showSuccessMessage();
     }
@@ -112,6 +115,10 @@ export class WordPuzzle {
 
   isSolved() {
     return this.getAnswer() === this.word;
+  }
+
+  isValid() {
+    return this.word.startsWith(this.getAnswer());
   }
 }
 
