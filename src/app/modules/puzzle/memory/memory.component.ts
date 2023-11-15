@@ -15,7 +15,6 @@ import {AsyncPipe, NgClass, NgFor} from '@angular/common';
                   @for (letter of word.letters;track letter) {
                       <div class="letter"
                            umExplosion="🍪"
-
                            [class.selected]="letter.revealed"
                            [ngClass]="letter.type"
                            (click)="onLetterClick(letter, word)">
@@ -25,10 +24,14 @@ import {AsyncPipe, NgClass, NgFor} from '@angular/common';
               </div>
           }
       </div>
-      <p [class.show]="showRefillText$ | async" class="show-refill-text">
-          WIĘCEJ!!!
-      </p>
-      <button class="refill-button" mat-mini-fab (click)="reset()">
+      @if (showAnswerText$ | async;) {
+          <p [class.show]="(showAnswerText$ | async)" class="answer-text">
+              @for (letter of answer.split('');track letter) {
+                  <span class="answer-text__letter" [class.space]="letter === ' '">{{ letter }}</span>
+              }
+          </p>
+      }
+      <button class="refill-button" mat-mini-fab (click)="reset()" [disabled]="!answer">
           <mat-icon>cookie</mat-icon>
       </button>
   `,
@@ -39,7 +42,7 @@ import {AsyncPipe, NgClass, NgFor} from '@angular/common';
 })
 export class MemoryComponent implements OnInit {
 
-  showRefillText$ = new BehaviorSubject(false);
+  showAnswerText$ = new BehaviorSubject(false);
   private readonly password = 'PRISON MIKE';
   wordPuzzles: WordPuzzle[] = [];
 
@@ -53,11 +56,12 @@ export class MemoryComponent implements OnInit {
   }
 
   reset() {
-    this.showRefillText$.next(true);
+    this.showAnswerText$.next(true);
     setTimeout(() => {
       this.wordPuzzles.forEach(word => word.reset());
-      this.showRefillText$.next(false);
-    }, 2000);
+      this.showAnswerText$.next(false);
+    }, 3000);
+
   }
 
   onLetterClick(letter: LetterToggle, word: WordPuzzle) {
@@ -66,6 +70,10 @@ export class MemoryComponent implements OnInit {
     if (isSolved) {
       this.messageService.showSuccessMessage();
     }
+  }
+
+  get answer() {
+    return this.wordPuzzles.map(p => p.getAnswer()).join(' ').trim();
   }
 }
 

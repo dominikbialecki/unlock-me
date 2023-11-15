@@ -13,14 +13,15 @@
 }
 
 .word {
+  margin-bottom: 1rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
   justify-items: center;
   align-items: center;
-  padding: 0.5rem 2rem;
+  padding: 1.5rem 3rem;
   background: url(../../../../assets/christmas/memory/baking-sheet.png) no-repeat center;
-  background-size: contain;
+  background-size: 100% 100%;
 }
 
 .letter {
@@ -64,8 +65,8 @@
   color: rgb(218 141 57);
 }
 
-.show-refill-text {
-  color: #222222;
+.answer-text {
+  color: white;
   font-size: 1.5rem;
   background-color: #ffffffaa;
   padding: 0.5rem;
@@ -75,5 +76,40 @@
 
   &.show {
     opacity: 1;
+  }
+
+  &__letter {
+    display: inline-block;
+    position: relative;
+    animation: waviy 5s infinite;
+
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: calc(.1s * $i);
+      }
+    }
+
+    &.space {
+      width: 2rem;
+    }
+  }
+}
+
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0);
+    color: #980b98;
+  }
+  20% {
+    color: chartreuse;
+    transform: translateY(-1px);
+  }
+  60% {
+    color: yellow;
+    transform: translateY(1px);
+  }
+  80% {
+    color: deepskyblue;
+    transform: translateY(2px);
   }
 }
